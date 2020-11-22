@@ -1,0 +1,872 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 37
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select adddate('2020-11-22',interval 4 day);
++--------------------------------------+
+| adddate('2020-11-22',interval 4 day) |
++--------------------------------------+
+| 2020-11-26                           |
++--------------------------------------+
+1 row in set (0.08 sec)
+
+mysql> select addtime('23:59:59.999999','1 1:1:1.000002');
++---------------------------------------------+
+| addtime('23:59:59.999999','1 1:1:1.000002') |
++---------------------------------------------+
+| 49:01:01.000001                             |
++---------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select convert_tx('2020-11-22 12:00:00',IST,GMT);
+ERROR 1046 (3D000): No database selected
+mysql> select convert_tz('2020-11-22 12:00:00',IST,GMT);
+ERROR 1054 (42S22): Unknown column 'IST' in 'field list'
+mysql> select convert_tz('2020-11-22 12:00:00',GMT,MET);
+ERROR 1054 (42S22): Unknown column 'GMT' in 'field list'
+mysql> select convert_tz('2020-11-22 12:00:00','+00:00','-10:00');
++-----------------------------------------------------+
+| convert_tz('2020-11-22 12:00:00','+00:00','-10:00') |
++-----------------------------------------------------+
+| 2020-11-22 02:00:00                                 |
++-----------------------------------------------------+
+1 row in set (0.05 sec)
+
+mysql> select convert_tz('2020-11-22 12:00:00','+00:00','+10:00');
++-----------------------------------------------------+
+| convert_tz('2020-11-22 12:00:00','+00:00','+10:00') |
++-----------------------------------------------------+
+| 2020-11-22 22:00:00                                 |
++-----------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2020-11-22 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2020-11-22     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date;
++--------------+
+| current_date |
++--------------+
+| 2020-11-22   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 16:22:41       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 16:22:47  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select curret_time;
+ERROR 1054 (42S22): Unknown column 'curret_time' in 'field list'
+mysql> select current_time;
++--------------+
+| current_time |
++--------------+
+| 16:23:09     |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select current_timestamp();
++---------------------+
+| current_timestamp() |
++---------------------+
+| 2020-11-22 16:23:29 |
++---------------------+
+1 row in set (0.05 sec)
+
+mysql> select curr_timestamp();
+ERROR 1046 (3D000): No database selected
+mysql> select cur_timestamp();
+ERROR 1046 (3D000): No database selected
+mysql> select current_timestamp;
++---------------------+
+| current_timestamp   |
++---------------------+
+| 2020-11-22 16:24:21 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate(),curtime();
++------------+-----------+
+| curdate()  | curtime() |
++------------+-----------+
+| 2020-11-22 | 16:24:43  |
++------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select date_add(curdate(),5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5)' at line 1
+mysql> select date_add(curdate(), interval 5 days);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'days)' at line 1
+mysql> select date_add(curdate(), interval 5 day);
++-------------------------------------+
+| date_add(curdate(), interval 5 day) |
++-------------------------------------+
+| 2020-11-27                          |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),'%Y');
++-----------------------------+
+| date_format(curdate(),'%Y') |
++-----------------------------+
+| 2020                        |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),'%y');
++-----------------------------+
+| date_format(curdate(),'%y') |
++-----------------------------+
+| 20                          |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),'%a');
++-----------------------------+
+| date_format(curdate(),'%a') |
++-----------------------------+
+| Sun                         |
++-----------------------------+
+1 row in set (0.05 sec)
+
+mysql> select date_format(curdate(),'%b');
++-----------------------------+
+| date_format(curdate(),'%b') |
++-----------------------------+
+| Nov                         |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),'%c');
++-----------------------------+
+| date_format(curdate(),'%c') |
++-----------------------------+
+| 11                          |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),'%D');
++-----------------------------+
+| date_format(curdate(),'%D') |
++-----------------------------+
+| 22nd                        |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),'%d');
++-----------------------------+
+| date_format(curdate(),'%d') |
++-----------------------------+
+| 22                          |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),'%e');
++-----------------------------+
+| date_format(curdate(),'%e') |
++-----------------------------+
+| 22                          |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curdate(),'%j');
++-----------------------------+
+| date_format(curdate(),'%j') |
++-----------------------------+
+| 327                         |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_format(curtime(),'%p');
++-----------------------------+
+| date_format(curtime(),'%p') |
++-----------------------------+
+| PM                          |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_sub(current_date,interval 5 day);
++---------------------------------------+
+| date_sub(current_date,interval 5 day) |
++---------------------------------------+
+| 2020-11-17                            |
++---------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date(current_timestamp);
++-------------------------+
+| date(current_timestamp) |
++-------------------------+
+| 2020-11-22              |
++-------------------------+
+1 row in set (0.04 sec)
+
+mysql> select datediff(currdate(),5);
+ERROR 1046 (3D000): No database selected
+mysql> select datediff(curdate(),5);
++-----------------------+
+| datediff(curdate(),5) |
++-----------------------+
+|                  NULL |
++-----------------------+
+1 row in set, 1 warning (0.05 sec)
+
+mysql> select datediff(curdate(),interval 5 day);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select datediff(curdate,interval 5 day);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select datediff(current_date,5);
++--------------------------+
+| datediff(current_date,5) |
++--------------------------+
+|                     NULL |
++--------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select datediff(curdate(),'2020-11-5');
++---------------------------------+
+| datediff(curdate(),'2020-11-5') |
++---------------------------------+
+|                              17 |
++---------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select day(current_date());
++---------------------+
+| day(current_date()) |
++---------------------+
+|                  22 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Sunday             |
++--------------------+
+1 row in set (0.05 sec)
+
+mysql> select dayofmonth(curdate());
++-----------------------+
+| dayofmonth(curdate()) |
++-----------------------+
+|                    22 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select dayofweek(curdate());
++----------------------+
+| dayofweek(curdate()) |
++----------------------+
+|                    1 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select dayofyear(curdate());
++----------------------+
+| dayofyear(curdate()) |
++----------------------+
+|                  327 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select extract(current_timestamp);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'current_timestamp)' at line 1
+mysql> select current_timestamp();
++---------------------+
+| current_timestamp() |
++---------------------+
+| 2020-11-22 16:40:20 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select current_timestamp;
++---------------------+
+| current_timestamp   |
++---------------------+
+| 2020-11-22 16:40:34 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select extract(curdate,curtime);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'curdate,curtime)' at line 1
+mysql> select extract(day from curdate());
++-----------------------------+
+| extract(day from curdate()) |
++-----------------------------+
+|                          22 |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select extract(month from curdate());
++-------------------------------+
+| extract(month from curdate()) |
++-------------------------------+
+|                            11 |
++-------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select from_days(567890);
++-------------------+
+| from_days(567890) |
++-------------------+
+| 1554-10-31        |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select from_days(78909);
++------------------+
+| from_days(78909) |
++------------------+
+| 0216-01-18       |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select from_days(780500);
++-------------------+
+| from_days(780500) |
++-------------------+
+| 2136-12-08        |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select from_unixtime(1234567890);
++---------------------------+
+| from_unixtime(1234567890) |
++---------------------------+
+| 2009-02-14 05:01:30       |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select getformat(date,'eur');
+ERROR 1046 (3D000): No database selected
+mysql>
+mysql> select get_format(date,'EUR');
++------------------------+
+| get_format(date,'EUR') |
++------------------------+
+| %d.%m.%Y               |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select get_format(date,'usa');
++------------------------+
+| get_format(date,'usa') |
++------------------------+
+| %m.%d.%Y               |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select get_format(date,'iso');
++------------------------+
+| get_format(date,'iso') |
++------------------------+
+| %Y-%m-%d               |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select hour(hour,curtime());
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',curtime())' at line 1
+mysql>
+mysql> select hour(current_time());
++----------------------+
+| hour(current_time()) |
++----------------------+
+|                   16 |
++----------------------+
+1 row in set (0.02 sec)
+
+mysql> select last_day(curdate());
++---------------------+
+| last_day(curdate()) |
++---------------------+
+| 2020-11-30          |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select localtime();
++---------------------+
+| localtime()         |
++---------------------+
+| 2020-11-22 16:54:19 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select localtime;
++---------------------+
+| localtime           |
++---------------------+
+| 2020-11-22 16:54:30 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select makedate(2020,22);
++-------------------+
+| makedate(2020,22) |
++-------------------+
+| 2020-01-22        |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select maketime(16,9,45);
++-------------------+
+| maketime(16,9,45) |
++-------------------+
+| 16:09:45          |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select microsecond(curtime());
++------------------------+
+| microsecond(curtime()) |
++------------------------+
+|                      0 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select microsecond('16:55;55.000046');
++--------------------------------+
+| microsecond('16:55;55.000046') |
++--------------------------------+
+|                              0 |
++--------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select microsecond('16:55:55.000046');
++--------------------------------+
+| microsecond('16:55:55.000046') |
++--------------------------------+
+|                             46 |
++--------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select minute(curtime());
++-------------------+
+| minute(curtime()) |
++-------------------+
+|                 0 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select minute(current_time);
++----------------------+
+| minute(current_time) |
++----------------------+
+|                    0 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select minute('16:55:55.000000');
++---------------------------+
+| minute('16:55:55.000000') |
++---------------------------+
+|                        55 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select monthname(current_date());
++---------------------------+
+| monthname(current_date()) |
++---------------------------+
+| November                  |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2020-11-22 17:01:27 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select period_add(202011,10);
++-----------------------+
+| period_add(202011,10) |
++-----------------------+
+|                202109 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select period_add(202007,10);
++-----------------------+
+| period_add(202007,10) |
++-----------------------+
+|                202105 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select period_add(201007,10);
++-----------------------+
+| period_add(201007,10) |
++-----------------------+
+|                201105 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select period_diff(201105,10);
++------------------------+
+| period_diff(201105,10) |
++------------------------+
+|                    127 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select period_diff(201105,201005);
++----------------------------+
+| period_diff(201105,201005) |
++----------------------------+
+|                         12 |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select quarter('2020-11-12');
++-----------------------+
+| quarter('2020-11-12') |
++-----------------------+
+|                     4 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select quarter('2020-09-12');
++-----------------------+
+| quarter('2020-09-12') |
++-----------------------+
+|                     3 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select sec_to_time(1);
++----------------+
+| sec_to_time(1) |
++----------------+
+| 00:00:01       |
++----------------+
+1 row in set (0.05 sec)
+
+mysql> select sec_to_time(567);
++------------------+
+| sec_to_time(567) |
++------------------+
+| 00:09:27         |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select second(curtime());
++-------------------+
+| second(curtime()) |
++-------------------+
+|                 2 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select second('16:56:56.000006');
++---------------------------+
+| second('16:56:56.000006') |
++---------------------------+
+|                        56 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select str_to_date('november 22 2020','%M %d %Y');
++--------------------------------------------+
+| str_to_date('november 22 2020','%M %d %Y') |
++--------------------------------------------+
+| 2020-11-22                                 |
++--------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select subdate('2020-11-19','2020-11-10');
++------------------------------------+
+| subdate('2020-11-19','2020-11-10') |
++------------------------------------+
+| 2015-05-10                         |
++------------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select subdate(curdate(),'2020-11-5');
++--------------------------------+
+| subdate(curdate(),'2020-11-5') |
++--------------------------------+
+| 2015-05-13                     |
++--------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select subdate(curdate(),interval 3 day);
++-----------------------------------+
+| subdate(curdate(),interval 3 day) |
++-----------------------------------+
+| 2020-11-19                        |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2020-11-22 17:15:55 |
++---------------------+
+1 row in set (0.06 sec)
+
+mysql> select time_format(curtime(),'%H %i %s %p');
++--------------------------------------+
+| time_format(curtime(),'%H %i %s %p') |
++--------------------------------------+
+| 17 18 37 PM                          |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select time_to_sec(curtime());
++------------------------+
+| time_to_sec(curtime()) |
++------------------------+
+|                  62348 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 17:19:23  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT TIME_TO_SEC("19:30:10");
++-------------------------+
+| TIME_TO_SEC("19:30:10") |
++-------------------------+
+|                   70210 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select time(curtime());
++-----------------+
+| time(curtime()) |
++-----------------+
+| 17:20:56        |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select time(now());
++-------------+
+| time(now()) |
++-------------+
+| 17:21:07    |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select timediff(current_time(),6);
++----------------------------+
+| timediff(current_time(),6) |
++----------------------------+
+| 17:22:57                   |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 17:24:03       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select timediff('17:24:03','17:22:03');
++---------------------------------+
+| timediff('17:24:03','17:22:03') |
++---------------------------------+
+| 00:02:00                        |
++---------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select timestampadd(month,5,curdate());
++---------------------------------+
+| timestampadd(month,5,curdate()) |
++---------------------------------+
+| 2021-04-22                      |
++---------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select timestampadd(day,5,curdate());
++-------------------------------+
+| timestampadd(day,5,curdate()) |
++-------------------------------+
+| 2020-11-27                    |
++-------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select timestampdiff(month,'2020-11-22','2020-04-22');
++------------------------------------------------+
+| timestampdiff(month,'2020-11-22','2020-04-22') |
++------------------------------------------------+
+|                                             -7 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select timestampdiff(month,'2020-11-22','2020-04-20');
++------------------------------------------------+
+| timestampdiff(month,'2020-11-22','2020-04-20') |
++------------------------------------------------+
+|                                             -7 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select timestampdiff(month,'2020-11-19','2020-04-20');
++------------------------------------------------+
+| timestampdiff(month,'2020-11-19','2020-04-20') |
++------------------------------------------------+
+|                                             -6 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select timestampdiff(month,'2020-11-19','2019-11-09');
++------------------------------------------------+
+| timestampdiff(month,'2020-11-19','2019-11-09') |
++------------------------------------------------+
+|                                            -12 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select to_days(curdate());
++--------------------+
+| to_days(curdate()) |
++--------------------+
+|             738116 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select unixtimestamp();
+ERROR 1046 (3D000): No database selected
+mysql> select unix_timestamp();
++------------------+
+| unix_timestamp() |
++------------------+
+|       1606046482 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select utc_date();
++------------+
+| utc_date() |
++------------+
+| 2020-11-22 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select utc_time();
++------------+
+| utc_time() |
++------------+
+| 12:01:50   |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select utc_timestamp();
++---------------------+
+| utc_timestamp()     |
++---------------------+
+| 2020-11-22 12:02:14 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select week();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select week(curdate);
+ERROR 1054 (42S22): Unknown column 'curdate' in 'field list'
+mysql> select week(current_date);
++--------------------+
+| week(current_date) |
++--------------------+
+|                 47 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select week(curdate());
++-----------------+
+| week(curdate()) |
++-----------------+
+|              47 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select weekday(curdate);
+ERROR 1054 (42S22): Unknown column 'curdate' in 'field list'
+mysql> select curdate;
+ERROR 1054 (42S22): Unknown column 'curdate' in 'field list'
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2020-11-22 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select weekday(curdate());
++--------------------+
+| weekday(curdate()) |
++--------------------+
+|                  6 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select weekofyear(curdate());
++-----------------------+
+| weekofyear(curdate()) |
++-----------------------+
+|                    47 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select year(current_date);
++--------------------+
+| year(current_date) |
++--------------------+
+|               2020 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select yearweek(curdate());
++---------------------+
+| yearweek(curdate()) |
++---------------------+
+|              202047 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql>

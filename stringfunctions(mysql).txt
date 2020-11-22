@@ -1,0 +1,988 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 30
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select ascii('v');
++------------+
+| ascii('v') |
++------------+
+|        118 |
++------------+
+1 row in set (0.05 sec)
+
+mysql> select bin('113');
++------------+
+| bin('113') |
++------------+
+| 1110001    |
++------------+
+1 row in set (0.09 sec)
+
+mysql> select bin('vaish');
++--------------+
+| bin('vaish') |
++--------------+
+| 0            |
++--------------+
+1 row in set, 1 warning (0.14 sec)
+
+mysql> select bin(2);
++--------+
+| bin(2) |
++--------+
+| 10     |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select(12);
++----+
+| 12 |
++----+
+| 12 |
++----+
+1 row in set (0.00 sec)
+
+mysql> select bin(12);
++---------+
+| bin(12) |
++---------+
+| 1100    |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select bit_length(1100);
++------------------+
+| bit_length(1100) |
++------------------+
+|               32 |
++------------------+
+1 row in set (0.06 sec)
+
+mysql> select bit_length(2);
++---------------+
+| bit_length(2) |
++---------------+
+|             8 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select bit_length(10);
++----------------+
+| bit_length(10) |
++----------------+
+|             16 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select bit_length('vaish');
++---------------------+
+| bit_length('vaish') |
++---------------------+
+|                  40 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select char_length('vaish');
++----------------------+
+| char_length('vaish') |
++----------------------+
+|                    5 |
++----------------------+
+1 row in set (0.05 sec)
+
+mysql> select char(65);
++--------------------+
+| char(65)           |
++--------------------+
+| 0x41               |
++--------------------+
+1 row in set (0.05 sec)
+
+mysql> select char(98);
++--------------------+
+| char(98)           |
++--------------------+
+| 0x62               |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select CHAR(65);
++--------------------+
+| CHAR(65)           |
++--------------------+
+| 0x41               |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select character_length('vaish');
++---------------------------+
+| character_length('vaish') |
++---------------------------+
+|                         5 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select char(67,68);
++--------------------------+
+| char(67,68)              |
++--------------------------+
+| 0x4344                   |
++--------------------------+
+1 row in set (0.00 sec)
+
+mysql> select concat_ws('-','vaishnavi','hcl','employee');
++---------------------------------------------+
+| concat_ws('-','vaishnavi','hcl','employee') |
++---------------------------------------------+
+| vaishnavi-hcl-employee                      |
++---------------------------------------------+
+1 row in set (0.07 sec)
+
+mysql> select concat('vaishnavi','.r');
++--------------------------+
+| concat('vaishnavi','.r') |
++--------------------------+
+| vaishnavi.r              |
++--------------------------+
+1 row in set (0.03 sec)
+
+mysql> select elt(3,'he','is','a','good','boy');
++-----------------------------------+
+| elt(3,'he','is','a','good','boy') |
++-----------------------------------+
+| a                                 |
++-----------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select elt(4,'he','is','a','good','boy');
++-----------------------------------+
+| elt(4,'he','is','a','good','boy') |
++-----------------------------------+
+| good                              |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select export_set(10,'1','0',' ',8);
++------------------------------+
+| export_set(10,'1','0',' ',8) |
++------------------------------+
+| 0 1 0 1 0 0 0 0              |
++------------------------------+
+1 row in set (0.03 sec)
+
+mysql> select export_set(64,'1','0',' ',8);
++------------------------------+
+| export_set(64,'1','0',' ',8) |
++------------------------------+
+| 0 0 0 0 0 0 1 0              |
++------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select export_set(128,'1','0',' ',8);
++-------------------------------+
+| export_set(128,'1','0',' ',8) |
++-------------------------------+
+| 0 0 0 0 0 0 0 1               |
++-------------------------------+
+1 row in set (0.00 sec)
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 33
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select field('vaish','hello','vaishnavi','vaish');
++--------------------------------------------+
+| field('vaish','hello','vaishnavi','vaish') |
++--------------------------------------------+
+|                                          3 |
++--------------------------------------------+
+1 row in set (0.06 sec)
+
+mysql> select find_in_set('a','v,a,i,s,h,n,a,v,i');
++--------------------------------------+
+| find_in_set('a','v,a,i,s,h,n,a,v,i') |
++--------------------------------------+
+|                                    2 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select format('93','percent');
++------------------------+
+| format('93','percent') |
++------------------------+
+| 93                     |
++------------------------+
+1 row in set, 1 warning (0.10 sec)
+
+mysql> select format('98','decimal');
++------------------------+
+| format('98','decimal') |
++------------------------+
+| 98                     |
++------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select format('98',2);
++----------------+
+| format('98',2) |
++----------------+
+| 98.00          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select format('98.98','percent');
++---------------------------+
+| format('98.98','percent') |
++---------------------------+
+| 99                        |
++---------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select format('98.98',3);
++-------------------+
+| format('98.98',3) |
++-------------------+
+| 98.980            |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select format('100.7896',3);
++----------------------+
+| format('100.7896',3) |
++----------------------+
+| 100.790              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select hex(10);
++---------+
+| hex(10) |
++---------+
+| A       |
++---------+
+1 row in set (0.06 sec)
+
+mysql> select hex(16);
++---------+
+| hex(16) |
++---------+
+| 10      |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select hex(15);
++---------+
+| hex(15) |
++---------+
+| F       |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select insert('goodemployee',1,4,'very');
++-----------------------------------+
+| insert('goodemployee',1,4,'very') |
++-----------------------------------+
+| veryemployee                      |
++-----------------------------------+
+1 row in set (0.05 sec)
+
+mysql> select insert('veryemployee',4,4,'good');
++-----------------------------------+
+| insert('veryemployee',4,4,'good') |
++-----------------------------------+
+| vergoodloyee                      |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select insert('very employee',4,4,'good');
++------------------------------------+
+| insert('very employee',4,4,'good') |
++------------------------------------+
+| vergoodployee                      |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select insert('very employee',5,4,'good');
++------------------------------------+
+| insert('very employee',5,4,'good') |
++------------------------------------+
+| verygoodloyee                      |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select insert('very    employee',5,4,'good');
++---------------------------------------+
+| insert('very    employee',5,4,'good') |
++---------------------------------------+
+| verygoodemployee                      |
++---------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr('nice school',' ');
++--------------------------+
+| instr('nice school',' ') |
++--------------------------+
+|                        5 |
++--------------------------+
+1 row in set (0.34 sec)
+
+mysql> select lcase('VAISHNAVI');
++--------------------+
+| lcase('VAISHNAVI') |
++--------------------+
+| vaishnavi          |
++--------------------+
+1 row in set (0.05 sec)
+
+mysql> select left('hello everyone and good morning',12);
++--------------------------------------------+
+| left('hello everyone and good morning',12) |
++--------------------------------------------+
+| hello everyo                               |
++--------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select left('hello everyone and good morning',15);
++--------------------------------------------+
+| left('hello everyone and good morning',15) |
++--------------------------------------------+
+| hello everyone                             |
++--------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select length('vaishnavi');
++---------------------+
+| length('vaishnavi') |
++---------------------+
+|                   9 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select length('hello');
++-----------------+
+| length('hello') |
++-----------------+
+|               5 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select LENGTH(2);
++-----------+
+| LENGTH(2) |
++-----------+
+|         1 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
+ERROR 1046 (3D000): No database selected
+mysql> select * from vaishnavidb.employee;
++-----+-------+-------+------------+--------+
+| Eid | Ename | Esal  | Edob       | Eyears |
++-----+-------+-------+------------+--------+
+| 111 | raja  | 34000 | 1998-09-19 |      2 |
+| 112 | rani  | 34000 | 1997-09-10 |      1 |
+| 113 | abi   | 37000 | 1995-12-19 |      1 |
+| 114 | ajay  | 56000 | 1991-10-09 |      5 |
+| 115 | ani   | 40000 | 1996-11-09 |      2 |
++-----+-------+-------+------------+--------+
+5 rows in set (0.20 sec)
+
+mysql> select * from employee where Ename like 'r%';
+ERROR 1046 (3D000): No database selected
+mysql> select * from vaishnavidb.employee where Ename like 'r%';
++-----+-------+-------+------------+--------+
+| Eid | Ename | Esal  | Edob       | Eyears |
++-----+-------+-------+------------+--------+
+| 111 | raja  | 34000 | 1998-09-19 |      2 |
+| 112 | rani  | 34000 | 1997-09-10 |      1 |
++-----+-------+-------+------------+--------+
+2 rows in set (0.05 sec)
+
+mysql> select * from vaishnavidb.employee where Ename like '%y';
++-----+-------+-------+------------+--------+
+| Eid | Ename | Esal  | Edob       | Eyears |
++-----+-------+-------+------------+--------+
+| 114 | ajay  | 56000 | 1991-10-09 |      5 |
++-----+-------+-------+------------+--------+
+1 row in set (0.00 sec)
+
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 34
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use database vaishnavidb;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| vaishnavidb        |
+| world              |
++--------------------+
+7 rows in set (0.16 sec)
+
+mysql> use vaishnavidb;
+Database changed
+mysql> select * load_file('C:\Users\DELL\eclipse-workspace\Day8\buffer.txt');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'load_file('C:\Users\DELL\eclipse-workspace\Day8\buffer.txt')' at line 1
+mysql> select * load_file('C:/Users/DELL/eclipse-workspace/Day8/buffer.txt');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'load_file('C:/Users/DELL/eclipse-workspace/Day8/buffer.txt')' at line 1
+mysql> select * load_file('Users/DELL/eclipse-workspace/Day8/buffer.txt');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'load_file('Users/DELL/eclipse-workspace/Day8/buffer.txt')' at line 1
+mysql> select * load_file('C:\Users\DELL\Desktop\files.txt');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'load_file('C:\Users\DELL\Desktop\files.txt')' at line 1
+mysql> select * load_file('Desktop/files.txt');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'load_file('Desktop/files.txt')' at line 1
+mysql> select locate(7,'vaishnavi16d107');
++-----------------------------+
+| locate(7,'vaishnavi16d107') |
++-----------------------------+
+|                          15 |
++-----------------------------+
+1 row in set (0.07 sec)
+
+mysql> select load_file('Desktop/files.txt');
++----------------------------------------------------------------+
+| load_file('Desktop/files.txt')                                 |
++----------------------------------------------------------------+
+| 0x                                                             |
++----------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select load_file('DELL/Desktop/files.txt');
++--------------------------------------------------------------------------+
+| load_file('DELL/Desktop/files.txt')                                      |
++--------------------------------------------------------------------------+
+| 0x                                                                       |
++--------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lower('vAiShNaVi');
++--------------------+
+| lower('vAiShNaVi') |
++--------------------+
+| vaishnavi          |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select lpad('vaishnavi',15,'r');
++--------------------------+
+| lpad('vaishnavi',15,'r') |
++--------------------------+
+| rrrrrrvaishnavi          |
++--------------------------+
+1 row in set (0.06 sec)
+
+mysql> select ltrim('            hello          everyone');
++----------------------------------------------+
+| ltrim('            hello          everyone') |
++----------------------------------------------+
+| hello          everyone                      |
++----------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select ltrim('       hello everyone');
++--------------------------------+
+| ltrim('       hello everyone') |
++--------------------------------+
+| hello everyone                 |
++--------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select make_set(1|2,'hello','everyone','hi');
++---------------------------------------+
+| make_set(1|2,'hello','everyone','hi') |
++---------------------------------------+
+| hello,everyone                        |
++---------------------------------------+
+1 row in set (0.07 sec)
+
+mysql> select make_set(1|3,'hello','everyone','hi');
++---------------------------------------+
+| make_set(1|3,'hello','everyone','hi') |
++---------------------------------------+
+| hello,everyone                        |
++---------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select match('vaishnavi','vaishnavi');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''vaishnavi','vaishnavi')' at line 1
+mysql> select *from vaishnavidb.employee;
++-----+-------+-------+------------+--------+
+| Eid | Ename | Esal  | Edob       | Eyears |
++-----+-------+-------+------------+--------+
+| 111 | raja  | 34000 | 1998-09-19 |      2 |
+| 112 | rani  | 34000 | 1997-09-10 |      1 |
+| 113 | abi   | 37000 | 1995-12-19 |      1 |
+| 114 | ajay  | 56000 | 1991-10-09 |      5 |
+| 115 | ani   | 40000 | 1996-11-09 |      2 |
++-----+-------+-------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select Eid,Esal from vaishnavidb.employee where match(Eid) agianst (113);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'agianst (113)' at line 1
+mysql> select Eid,Esal from vaishnavidb.employee where match(Eid) agianst ('113');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'agianst ('113')' at line 1
+mysql> select Eid,Esal from vaishnavidb.employee where match(Eid) against (113);
+ERROR 1191 (HY000): Can't find FULLTEXT index matching the column list
+mysql> select Eid,Esal from vaishnavidb.employee where match(Ename) against ('abi');
+ERROR 1191 (HY000): Can't find FULLTEXT index matching the column list
+mysql> select Eid,Esal from vaishnavidb.employee where match(Ename) against ('a');
+ERROR 1191 (HY000): Can't find FULLTEXT index matching the column list
+mysql> select match('hello everyone') against ('hello');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''hello everyone') against ('hello')' at line 1
+mysql> select Eid,Esal from vaishnavidb.employee where match(Eyears) against (09);
+ERROR 1191 (HY000): Can't find FULLTEXT index matching the column list
+mysql> select * from vaishnavidb.permanent_employee;
++-------------------+--------+------+
+| Designation       | Gender | Eid  |
++-------------------+--------+------+
+| software engineer | male   |  111 |
+| data analyst      | female |  112 |
+| software engineer | female |  113 |
+| developer         | male   |  114 |
+| service engineer  | female |  115 |
++-------------------+--------+------+
+5 rows in set (0.07 sec)
+
+mysql> select * from vaishnavidb.permanent_employee where match(Designation) against ('engineer');
+ERROR 1191 (HY000): Can't find FULLTEXT index matching the column list
+mysql>
+mysql> select mid('hello everyone',7,10);
++----------------------------+
+| mid('hello everyone',7,10) |
++----------------------------+
+| everyone                   |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select mid('hello everyone',7,3);
++---------------------------+
+| mid('hello everyone',7,3) |
++---------------------------+
+| eve                       |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select mid('hello everyone',7,4);
++---------------------------+
+| mid('hello everyone',7,4) |
++---------------------------+
+| ever                      |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from vaishnavidb.permanent_employee where Designation notlike 's%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notlike 's%'' at line 1
+mysql> select * from vaishnavidb.employee where Ename NOT LIKE 'r%';
++-----+-------+-------+------------+--------+
+| Eid | Ename | Esal  | Edob       | Eyears |
++-----+-------+-------+------------+--------+
+| 113 | abi   | 37000 | 1995-12-19 |      1 |
+| 114 | ajay  | 56000 | 1991-10-09 |      5 |
+| 115 | ani   | 40000 | 1996-11-09 |      2 |
++-----+-------+-------+------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from vaishnavidb.permanent_employee where Designation NOT REGEXP 's%';
++-------------------+--------+------+
+| Designation       | Gender | Eid  |
++-------------------+--------+------+
+| software engineer | male   |  111 |
+| data analyst      | female |  112 |
+| software engineer | female |  113 |
+| developer         | male   |  114 |
+| service engineer  | female |  115 |
++-------------------+--------+------+
+5 rows in set (0.20 sec)
+
+mysql> select * from vaishnavidb.permanent_employee where Designation NOT REGEXP '^s';
++--------------+--------+------+
+| Designation  | Gender | Eid  |
++--------------+--------+------+
+| data analyst | female |  112 |
+| developer    | male   |  114 |
++--------------+--------+------+
+2 rows in set (0.03 sec)
+
+mysql> select octet_length('vaishnavi');
++---------------------------+
+| octet_length('vaishnavi') |
++---------------------------+
+|                         9 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select ord('vaish');
++--------------+
+| ord('vaish') |
++--------------+
+|          118 |
++--------------+
+1 row in set (0.05 sec)
+
+mysql> select ord('v');
++----------+
+| ord('v') |
++----------+
+|      118 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select position(0,'vaishnavi16d107');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','vaishnavi16d107')' at line 1
+mysql> select position('0','vaishnavi16d107');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','vaishnavi16d107')' at line 1
+mysql> select position(7,'vaishnavi16d107');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','vaishnavi16d107')' at line 1
+mysql> select POSITION('7','vaishnavi16d107');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','vaishnavi16d107')' at line 1
+mysql> select POSITION('7' IN 'vaishnavi16d107');
++------------------------------------+
+| POSITION('7' IN 'vaishnavi16d107') |
++------------------------------------+
+|                                 15 |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select quote('hello','guys');
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'quote'
+mysql> select quote('hello' 'guys');
++-----------------------+
+| quote('hello' 'guys') |
++-----------------------+
+| 'helloguys'           |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select quote(Ename) from vaishnavidb.employee where Eid=112;
++--------------+
+| quote(Ename) |
++--------------+
+| 'rani'       |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from vaishnavidb.employee where REGEXP 'r';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REGEXP 'r'' at line 1
+mysql> select 'vaishnavi' REGEXP '[a-z]';
++----------------------------+
+| 'vaishnavi' REGEXP '[a-z]' |
++----------------------------+
+|                          1 |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select repeat('very',2,'good');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','good')' at line 1
+mysql> select repeat('very',2);
++------------------+
+| repeat('very',2) |
++------------------+
+| veryvery         |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select replace('vaishnavi','a','u');
++------------------------------+
+| replace('vaishnavi','a','u') |
++------------------------------+
+| vuishnuvi                    |
++------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select reverse('good morning');
++-------------------------+
+| reverse('good morning') |
++-------------------------+
+| gninrom doog            |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select right('vaishnavi',4);
++----------------------+
+| right('vaishnavi',4) |
++----------------------+
+| navi                 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select 'hello' rlike '[l]';
++---------------------+
+| 'hello' rlike '[l]' |
++---------------------+
+|                   1 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select rpad('vaishnavi',12,'r');
++--------------------------+
+| rpad('vaishnavi',12,'r') |
++--------------------------+
+| vaishnavirrr             |
++--------------------------+
+1 row in set (0.05 sec)
+
+mysql> select rtrim('hello     everyone');
++-----------------------------+
+| rtrim('hello     everyone') |
++-----------------------------+
+| hello     everyone          |
++-----------------------------+
+1 row in set (0.05 sec)
+
+mysql> select rtrim('hello everyone      ');
++-------------------------------+
+| rtrim('hello everyone      ') |
++-------------------------------+
+| hello everyone                |
++-------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select soundex('vaishnavi');
++----------------------+
+| soundex('vaishnavi') |
++----------------------+
+| V251                 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select soundex('vaishnavi') = soundex('vaish');
++-----------------------------------------+
+| soundex('vaishnavi') = soundex('vaish') |
++-----------------------------------------+
+|                                       0 |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select soundex('vaishnavi') = soundex('vaishnavi');
++---------------------------------------------+
+| soundex('vaishnavi') = soundex('vaishnavi') |
++---------------------------------------------+
+|                                           1 |
++---------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select 'vaishnavi' sounds like 'vaishnavi';
++-------------------------------------+
+| 'vaishnavi' sounds like 'vaishnavi' |
++-------------------------------------+
+|                                   1 |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select 'hello' sounds like 'llo';
++---------------------------+
+| 'hello' sounds like 'llo' |
++---------------------------+
+|                         0 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select space('hello everyone',3);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'space'
+mysql>
+mysql> select 'vaishnavi' space(3);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(3)' at line 1
+mysql>
+mysql> select space(6);
++----------+
+| space(6) |
++----------+
+|          |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select space(6) 'vaishnavi';
++-----------+
+| vaishnavi |
++-----------+
+|           |
++-----------+
+1 row in set (0.05 sec)
+
+mysql> select 'space(6)vaishnavi';
++-------------------+
+| space(6)vaishnavi |
++-------------------+
+| space(6)vaishnavi |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select space(3);
++----------+
+| space(3) |
++----------+
+|          |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select strcmp('hello','hello');
++-------------------------+
+| strcmp('hello','hello') |
++-------------------------+
+|                       0 |
++-------------------------+
+1 row in set (0.05 sec)
+
+mysql> select strcmp('hello','everyone');
++----------------------------+
+| strcmp('hello','everyone') |
++----------------------------+
+|                          1 |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select substr('vaishnavi',5,3);
++-------------------------+
+| substr('vaishnavi',5,3) |
++-------------------------+
+| hna                     |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select substring_index('www.gmail.com','.',1);
++----------------------------------------+
+| substring_index('www.gmail.com','.',1) |
++----------------------------------------+
+| www                                    |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select substring_index('www.gmail.com','.',2);
++----------------------------------------+
+| substring_index('www.gmail.com','.',2) |
++----------------------------------------+
+| www.gmail                              |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select substring_index('www/gmail/com','/',2);
++----------------------------------------+
+| substring_index('www/gmail/com','/',2) |
++----------------------------------------+
+| www/gmail                              |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select substring('vaishnavi',5,4);
++----------------------------+
+| substring('vaishnavi',5,4) |
++----------------------------+
+| hnav                       |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select trim('    hello    everyone    ');
++-----------------------------------+
+| trim('    hello    everyone    ') |
++-----------------------------------+
+| hello    everyone                 |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select trim('    hello everyone    ');
++--------------------------------+
+| trim('    hello everyone    ') |
++--------------------------------+
+| hello everyone                 |
++--------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select ucase('VAISHnavi');
++--------------------+
+| ucase('VAISHnavi') |
++--------------------+
+| VAISHNAVI          |
++--------------------+
+1 row in set (0.06 sec)
+
+mysql> select unhex('oxABCD');
++----------------------------------+
+| unhex('oxABCD')                  |
++----------------------------------+
+| 0x                               |
++----------------------------------+
+1 row in set, 1 warning (0.08 sec)
+
+mysql> SELECT UNHEX('444555566667777dfed');
++------------------------------------------------------------+
+| UNHEX('444555566667777dfed')                               |
++------------------------------------------------------------+
+| 0x0444555566667777DFED                                     |
++------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT UNHEX('4d7953514c205475746f7269616c2c77337265736f757263');
++----------------------------------------------------------------------------------------------------------------------+
+| UNHEX('4d7953514c205475746f7269616c2c77337265736f757263')                                                            |
++----------------------------------------------------------------------------------------------------------------------+
+| 0x4D7953514C205475746F7269616C2C77337265736F757263                                                                   |
++----------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select hex('vaish');
++--------------+
+| hex('vaish') |
++--------------+
+| 7661697368   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select unhex(7661697368);
++--------------------------------------+
+| unhex(7661697368)                    |
++--------------------------------------+
+| 0x7661697368                         |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select unhex('vaish');
++--------------------------------+
+| unhex('vaish')                 |
++--------------------------------+
+| 0x                             |
++--------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select upper('vAiShNaVi');
++--------------------+
+| upper('vAiShNaVi') |
++--------------------+
+| VAISHNAVI          |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql>

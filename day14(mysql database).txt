@@ -1,0 +1,499 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 28
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use vaishnavidb;
+Database changed
+mysql> create table student(sid int(11),sname varchar(20),sadd varchar(30));
+Query OK, 0 rows affected, 1 warning (8.84 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| sid   | int         | YES  |     | NULL    |       |
+| sname | varchar(20) | YES  |     | NULL    |       |
+| sadd  | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.40 sec)
+
+mysql> alter table student add(sdob date);
+Query OK, 0 rows affected (2.22 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student
+    -> desc student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc student' at line 2
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| sid   | int         | YES  |     | NULL    |       |
+| sname | varchar(20) | YES  |     | NULL    |       |
+| sadd  | varchar(30) | YES  |     | NULL    |       |
+| sdob  | date        | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> rename table student to student1
+    -> rename table student to student1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rename table student to student1' at line 2
+mysql> rename table student to student1;
+Query OK, 0 rows affected (0.97 sec)
+
+mysql> desc student;
+ERROR 1146 (42S02): Table 'vaishnavidb.student' doesn't exist
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| sid   | int         | YES  |     | NULL    |       |
+| sname | varchar(20) | YES  |     | NULL    |       |
+| sadd  | varchar(30) | YES  |     | NULL    |       |
+| sdob  | date        | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.24 sec)
+
+mysql> alter table student1 drop sdob
+    -> alter table student1 drop sdob;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'alter table student1 drop sdob' at line 2
+mysql> alter table student1 drop sdob;
+Query OK, 0 rows affected (3.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student
+    -> desc student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc student' at line 2
+mysql> desc student;
+ERROR 1146 (42S02): Table 'vaishnavidb.student' doesn't exist
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| sid   | int         | YES  |     | NULL    |       |
+| sname | varchar(20) | YES  |     | NULL    |       |
+| sadd  | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.10 sec)
+
+mysql> alter table student1 rename sadd to stdadd;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to stdadd' at line 1
+mysql> alter table student1 rename sadd to add;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to add' at line 1
+mysql> alter table student1 column sadd to add;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'column sadd to add' at line 1
+mysql> alter table student1 rename column sadd to address;
+Query OK, 0 rows affected (0.53 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| sid     | int         | YES  |     | NULL    |       |
+| sname   | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(30) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.57 sec)
+
+mysql> alter table student1 modify column sid smallint;
+Query OK, 0 rows affected (3.48 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> drop table student1;
+Query OK, 0 rows affected (0.48 sec)
+
+mysql> desc student1;
+ERROR 1146 (42S02): Table 'vaishnavidb.student1' doesn't exist
+mysql> create table student(sid int(11),sname varchar(20),sadd varchar(30));
+Query OK, 0 rows affected, 1 warning (1.47 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| sid   | int         | YES  |     | NULL    |       |
+| sname | varchar(20) | YES  |     | NULL    |       |
+| sadd  | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.13 sec)
+
+mysql> alter table student rename to student1;
+Query OK, 0 rows affected (0.74 sec)
+
+mysql> insert into student values(134,'raja','chennai');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student1 values(134,'raja','chennai');
+Query OK, 1 row affected (0.27 sec)
+
+mysql> select * from student1;
++------+-------+---------+
+| sid  | sname | sadd    |
++------+-------+---------+
+|  134 | raja  | chennai |
++------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> drop table student1;
+Query OK, 0 rows affected (2.04 sec)
+
+mysql> create table Employee(Eid int(11), Ename varchar(20), Esal float, Edob date, Eyears int(10));
+Query OK, 0 rows affected, 2 warnings (1.29 sec)
+
+mysql> desc Employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Eid    | int         | YES  |     | NULL    |       |
+| Ename  | varchar(20) | YES  |     | NULL    |       |
+| Esal   | float       | YES  |     | NULL    |       |
+| Edob   | date        | YES  |     | NULL    |       |
+| Eyears | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.14 sec)
+
+mysql> drop table Employee;
+Query OK, 0 rows affected (1.32 sec)
+
+mysql> create table Employee(Eid int(11) PRIMARY KEY, Ename varchar(20) NOT NULL, Esal float CHECK(Esal>0) , Edob date NOT NULL , Eyears int(10) DEFAULT(1));
+Query OK, 0 rows affected, 2 warnings (1.87 sec)
+
+mysql> desc Employee
+    -> desc Employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc Employee' at line 2
+mysql> desc Employee;
++--------+-------------+------+-----+---------+-------------------+
+| Field  | Type        | Null | Key | Default | Extra             |
++--------+-------------+------+-----+---------+-------------------+
+| Eid    | int         | NO   | PRI | NULL    |                   |
+| Ename  | varchar(20) | NO   |     | NULL    |                   |
+| Esal   | float       | YES  |     | NULL    |                   |
+| Edob   | date        | NO   |     | NULL    |                   |
+| Eyears | int         | YES  |     | 1       | DEFAULT_GENERATED |
++--------+-------------+------+-----+---------+-------------------+
+5 rows in set (0.12 sec)
+
+mysql> insert into Employee values(111,'raja',34000,'1998-09-19',2);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> select * from Employee;
++-----+-------+-------+------------+--------+
+| Eid | Ename | Esal  | Edob       | Eyears |
++-----+-------+-------+------------+--------+
+| 111 | raja  | 34000 | 1998-09-19 |      2 |
++-----+-------+-------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql>  insert into Employee values(112,'rani',34000,'1998-09-09');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>  insert into Employee(Eid,Ename,Esal,Edob) values(112,'rani',34000,'1997-09-10');
+Query OK, 1 row affected (0.20 sec)
+
+mysql>  insert into Employee values(113,'abi'370000,'1995-12-19',1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '370000,'1995-12-19',1)' at line 1
+mysql> insert into Employee values(113,'abi',370000,'1995-12-19',1);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into Employee values(114,'ajay',56000,'1991-10-09',5);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from Employee;
++-----+-------+--------+------------+--------+
+| Eid | Ename | Esal   | Edob       | Eyears |
++-----+-------+--------+------------+--------+
+| 111 | raja  |  34000 | 1998-09-19 |      2 |
+| 112 | rani  |  34000 | 1997-09-10 |      1 |
+| 113 | abi   | 370000 | 1995-12-19 |      1 |
+| 114 | ajay  |  56000 | 1991-10-09 |      5 |
++-----+-------+--------+------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> insert into Employee values(115,'ani',40000,'1996-11-09',2);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from Employee;
++-----+-------+--------+------------+--------+
+| Eid | Ename | Esal   | Edob       | Eyears |
++-----+-------+--------+------------+--------+
+| 111 | raja  |  34000 | 1998-09-19 |      2 |
+| 112 | rani  |  34000 | 1997-09-10 |      1 |
+| 113 | abi   | 370000 | 1995-12-19 |      1 |
+| 114 | ajay  |  56000 | 1991-10-09 |      5 |
+| 115 | ani   |  40000 | 1996-11-09 |      2 |
++-----+-------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> create table Permanent_Employee(PEid int(11) PRIMARY KEY, PEname varchar(20) NOT NULL, PEsal float CHECK(PEsal>0), PEdob date NOT NULL, PEyears int(10) NOT NULL, Category DEFAULT('PERMANENT'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT('PERMANENT'))' at line 1
+mysql>  create table Permanent_Employee(PEid int(11) PRIMARY KEY, PEname varchar(20) NOT NULL, PEsal float CHECK(PEsal>0), PEdob date NOT NULL, PEyears int(10) NOT NULL, Category DEFAULT(PERMANENT));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT(PERMANENT))' at line 1
+mysql>  create table Permanent_Employee(PEid int(11) PRIMARY KEY, PEname varchar(20) NOT NULL, PEsal float CHECK(PEsal>0), PEdob date NOT NULL, PEyears int(10) NOT NULL);
+Query OK, 0 rows affected, 2 warnings (2.94 sec)
+
+mysql> insert into Permanent_Employee(141,'rakesh',32000,'1998-07-15',1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '141,'rakesh',32000,'1998-07-15',1)' at line 1
+mysql> desc Permanent_Employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| PEid    | int         | NO   | PRI | NULL    |       |
+| PEname  | varchar(20) | NO   |     | NULL    |       |
+| PEsal   | float       | YES  |     | NULL    |       |
+| PEdob   | date        | NO   |     | NULL    |       |
+| PEyears | int         | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.13 sec)
+
+mysql> insert into Permanent_Employee values(141,'rakesh',32000,'1998-07-15',1);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into Permanent_Employee values(142,'seeta',35000,'1995-09-17',2);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into Permanent_Employee values(143,'ranjith',38000,'1996-06-16',1);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> alter table Permanent_Employee drop PEid;
+Query OK, 3 rows affected (4.46 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent_Employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| PEname  | varchar(20) | NO   |     | NULL    |       |
+| PEsal   | float       | YES  |     | NULL    |       |
+| PEdob   | date        | NO   |     | NULL    |       |
+| PEyears | int         | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.10 sec)
+
+mysql> alter table Permanent_Employee drop PEname;
+Query OK, 0 rows affected (2.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Permanent_Employee drop PEsal;
+Query OK, 0 rows affected (1.79 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Permanent_Employee add No_of_hours int;
+Query OK, 0 rows affected (1.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent_Employee;
++-------------+------+------+-----+---------+-------+
+| Field       | Type | Null | Key | Default | Extra |
++-------------+------+------+-----+---------+-------+
+| PEdob       | date | NO   |     | NULL    |       |
+| PEyears     | int  | NO   |     | NULL    |       |
+| No_of_hours | int  | YES  |     | NULL    |       |
++-------------+------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+mysql> alter table Permanent_Employee drop PEdob;
+Query OK, 0 rows affected (3.29 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Permanent_Employee add Designation varchar(10);
+Query OK, 0 rows affected (0.80 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent_Employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| PEyears     | int         | NO   |     | NULL    |       |
+| No_of_hours | int         | YES  |     | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table Permanent_Employee add Position default 'male';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default 'male'' at line 1
+mysql> alter table Permanent_Employee add Position varchar(10) default 'male';
+Query OK, 0 rows affected (0.39 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent_Employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| PEyears     | int         | NO   |     | NULL    |       |
+| No_of_hours | int         | YES  |     | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Position    | varchar(10) | YES  |     | male    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.09 sec)
+
+mysql> alter table Permanent_Employee drop Position;
+Query OK, 0 rows affected (3.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Permanent_Employee add Gender varchar(10) default 'male';
+Query OK, 0 rows affected (0.47 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent_Employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| PEyears     | int         | NO   |     | NULL    |       |
+| No_of_hours | int         | YES  |     | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Gender      | varchar(10) | YES  |     | male    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table Permanent_Employee drop PEyears;
+Query OK, 0 rows affected (2.49 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent_Employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| No_of_hours | int         | YES  |     | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Gender      | varchar(10) | YES  |     | male    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+mysql> alter table Permanent_Employee Eid int foreign key(Eid) references Employee(Eid);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Eid int foreign key(Eid) references Employee(Eid)' at line 1
+mysql> alter table Permanent_Employee add Eid int;
+Query OK, 0 rows affected (0.88 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent Employee;
+ERROR 1146 (42S02): Table 'vaishnavidb.permanent' doesn't exist
+mysql> desc Permanent_Employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| No_of_hours | int         | YES  |     | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Gender      | varchar(10) | YES  |     | male    |       |
+| Eid         | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.13 sec)
+
+mysql> alter table Permanent_Employee add foreign key(Eid) references Employee(Eid);
+Query OK, 3 rows affected (3.78 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent_Employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| No_of_hours | int         | YES  |     | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Gender      | varchar(10) | YES  |     | male    |       |
+| Eid         | int         | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.08 sec)
+
+mysql> alter table Permanent_Employee drop Eid;
+ERROR 1828 (HY000): Cannot drop column 'Eid': needed in a foreign key constraint 'permanent_employee_ibfk_1'
+mysql> alter table Permanent_Employee drop foreign key(Eid) references Employee(Eid);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(Eid) references Employee(Eid)' at line 1
+mysql> desc Permanent_Employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| No_of_hours | int         | YES  |     | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Gender      | varchar(10) | YES  |     | male    |       |
+| Eid         | int         | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> create index  id on Employee(Eid);
+Query OK, 0 rows affected (1.72 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from Employee;
++-----+-------+--------+------------+--------+
+| Eid | Ename | Esal   | Edob       | Eyears |
++-----+-------+--------+------------+--------+
+| 111 | raja  |  34000 | 1998-09-19 |      2 |
+| 112 | rani  |  34000 | 1997-09-10 |      1 |
+| 113 | abi   | 370000 | 1995-12-19 |      1 |
+| 114 | ajay  |  56000 | 1991-10-09 |      5 |
+| 115 | ani   |  40000 | 1996-11-09 |      2 |
++-----+-------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> alter table Permanent_Employee  drop No_of_hours;
+Query OK, 0 rows affected (2.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Permanent_Employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Gender      | varchar(10) | YES  |     | male    |       |
+| Eid         | int         | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.12 sec)
+
+mysql> insert into Permanent_Employee values('software engineer','female',113);
+ERROR 1406 (22001): Data too long for column 'Designation' at row 1
+mysql> alter table Permanent_Employee modify column Designation varchar(30);
+Query OK, 0 rows affected (0.47 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into Permanent_Employee values('software engineer','female',113);
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into Permanenet_Employee values('software engineer','male',111);
+ERROR 1146 (42S02): Table 'vaishnavidb.permanenet_employee' doesn't exist
+mysql> insert into Permanent_Employee values('software engineer','male',111);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert into Permanent_Employee(Designation,Eid)values('Developer',114);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into Permanent_Employee values('Business Analyst','female',112);
+Query OK, 1 row affected (0.24 sec)
+
+mysql> insert into Permanent_Employee values('service engineer','female',115);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from Permanent_Employee;
++-------------------+--------+------+
+| Designation       | Gender | Eid  |
++-------------------+--------+------+
+| NULL              | male   | NULL |
+| NULL              | male   | NULL |
+| NULL              | male   | NULL |
+| software engineer | female |  113 |
+| software engineer | male   |  111 |
+| Developer         | male   |  114 |
+| Business Analyst  | female |  112 |
+| service engineer  | female |  115 |
++-------------------+--------+------+
+8 rows in set (0.00 sec)
+
+mysql> select *from Employee;
++-----+-------+--------+------------+--------+
+| Eid | Ename | Esal   | Edob       | Eyears |
++-----+-------+--------+------------+--------+
+| 111 | raja  |  34000 | 1998-09-19 |      2 |
+| 112 | rani  |  34000 | 1997-09-10 |      1 |
+| 113 | abi   | 370000 | 1995-12-19 |      1 |
+| 114 | ajay  |  56000 | 1991-10-09 |      5 |
+| 115 | ani   |  40000 | 1996-11-09 |      2 |
++-----+-------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql>

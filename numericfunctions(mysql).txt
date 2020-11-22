@@ -1,0 +1,820 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 35
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select abs(98.9);
++-----------+
+| abs(98.9) |
++-----------+
+|      98.9 |
++-----------+
+1 row in set (0.10 sec)
+
+mysql> select abs(-0.99);
++------------+
+| abs(-0.99) |
++------------+
+|       0.99 |
++------------+
+1 row in set (0.05 sec)
+
+mysql> select acos(1);
++---------+
+| acos(1) |
++---------+
+|       0 |
++---------+
+1 row in set (0.03 sec)
+
+mysql> select acos(30);
++----------+
+| acos(30) |
++----------+
+|     NULL |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select acos(format(30,'degree'));
++---------------------------+
+| acos(format(30,'degree')) |
++---------------------------+
+|                      NULL |
++---------------------------+
+1 row in set, 1 warning (0.02 sec)
+
+mysql> select format(30,'degree');
++---------------------+
+| format(30,'degree') |
++---------------------+
+| 30                  |
++---------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select format(98.99,3);
++-----------------+
+| format(98.99,3) |
++-----------------+
+| 98.990          |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select acos(6);
++---------+
+| acos(6) |
++---------+
+|    NULL |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select acos(-1);
++-------------------+
+| acos(-1)          |
++-------------------+
+| 3.141592653589793 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select acos(0);
++--------------------+
+| acos(0)            |
++--------------------+
+| 1.5707963267948966 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select acos(0.5);
++--------------------+
+| acos(0.5)          |
++--------------------+
+| 1.0471975511965979 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select asin(1);
++--------------------+
+| asin(1)            |
++--------------------+
+| 1.5707963267948966 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select asin(-1);
++---------------------+
+| asin(-1)            |
++---------------------+
+| -1.5707963267948966 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select asin(0);
++---------+
+| asin(0) |
++---------+
+|       0 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select asin(0.5);
++--------------------+
+| asin(0.5)          |
++--------------------+
+| 0.5235987755982989 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select atan(1);
++--------------------+
+| atan(1)            |
++--------------------+
+| 0.7853981633974483 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select atan(0.5);
++--------------------+
+| atan(0.5)          |
++--------------------+
+| 0.4636476090008061 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select atan(0.45);
++--------------------+
+| atan(0.45)         |
++--------------------+
+| 0.4228539261329407 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> selct atan2(5/9);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct atan2(5/9)' at line 1
+mysql> select atan2(5,9);
++-------------------+
+| atan2(5,9)        |
++-------------------+
+| 0.507098504392337 |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> select ceil(5.55);
++------------+
+| ceil(5.55) |
++------------+
+|          6 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> selct ceil(1.33);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct ceil(1.33)' at line 1
+mysql> select ceil(1.33);
++------------+
+| ceil(1.33) |
++------------+
+|          2 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select(1.5);
++-----+
+| 1.5 |
++-----+
+| 1.5 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select ceil(1.5);
++-----------+
+| ceil(1.5) |
++-----------+
+|         2 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select ceil(1.1);
++-----------+
+| ceil(1.1) |
++-----------+
+|         2 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select ceiling(1.34);
++---------------+
+| ceiling(1.34) |
++---------------+
+|             2 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select ceiling(5.55);
++---------------+
+| ceiling(5.55) |
++---------------+
+|             6 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select conv(10,2,16);
++---------------+
+| conv(10,2,16) |
++---------------+
+| 2             |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> select conv('10',2,16);
++-----------------+
+| conv('10',2,16) |
++-----------------+
+| 2               |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select conv('0010',2,16);
++-------------------+
+| conv('0010',2,16) |
++-------------------+
+| 2                 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select conv('1010',2,16);
++-------------------+
+| conv('1010',2,16) |
++-------------------+
+| A                 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select cos(1);
++--------------------+
+| cos(1)             |
++--------------------+
+| 0.5403023058681397 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select cos(0);
++--------+
+| cos(0) |
++--------+
+|      1 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select cos(30);
++---------------------+
+| cos(30)             |
++---------------------+
+| 0.15425144988758405 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select cot(1);
++--------------------+
+| cot(1)             |
++--------------------+
+| 0.6420926159343306 |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select cot(0);
+ERROR 1690 (22003): DOUBLE value is out of range in 'cot(0)'
+mysql> select cot(90
+    -> 0
+    -> l
+    -> l;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0
+l
+l' at line 2
+mysql> select cot(90);
++---------------------+
+| cot(90)             |
++---------------------+
+| -0.5012027833801532 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select cot(45);
++--------------------+
+| cot(45)            |
++--------------------+
+| 0.6173696237835551 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select crc32('vaishnavi')
+    -> l;
++------------+
+| l          |
++------------+
+| 2630640298 |
++------------+
+1 row in set (0.02 sec)
+
+mysql> select crc32('vaishnavi');
++--------------------+
+| crc32('vaishnavi') |
++--------------------+
+|         2630640298 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select degrees(pi());
++---------------+
+| degrees(pi()) |
++---------------+
+|           180 |
++---------------+
+1 row in set (0.07 sec)
+
+mysql> select degress(pi()/60);
+ERROR 1046 (3D000): No database selected
+mysql> select degrees(pi()/60);
++------------------+
+| degrees(pi()/60) |
++------------------+
+|                3 |
++------------------+
+1 row in set (0.06 sec)
+
+mysql> select degrees(pi()/6);
++--------------------+
+| degrees(pi()/6)    |
++--------------------+
+| 29.999999999999996 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select degrees(pi()/3);
++-------------------+
+| degrees(pi()/3)   |
++-------------------+
+| 59.99999999999999 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select div(9/10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'div(9/10)' at line 1
+mysql> select div(9/9);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'div(9/9)' at line 1
+mysql>
+mysql> select 9 div 10;
++----------+
+| 9 div 10 |
++----------+
+|        0 |
++----------+
+1 row in set (0.05 sec)
+
+mysql> select 10 div 9;
++----------+
+| 10 div 9 |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select 9 div 3;
++---------+
+| 9 div 3 |
++---------+
+|       3 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select 10/9;
++--------+
+| 10/9   |
++--------+
+| 1.1111 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select 9/8;
++--------+
+| 9/8    |
++--------+
+| 1.1250 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select 10 exp(3);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(3)' at line 1
+mysql>
+mysql> select exp(1);
++-------------------+
+| exp(1)            |
++-------------------+
+| 2.718281828459045 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select(-1);
++------+
+| (-1) |
++------+
+|   -1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select exp(-1);
++---------------------+
+| exp(-1)             |
++---------------------+
+| 0.36787944117144233 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select exp(-0.5);
++--------------------+
+| exp(-0.5)          |
++--------------------+
+| 0.6065306597126334 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select floor(1.11);
++-------------+
+| floor(1.11) |
++-------------+
+|           1 |
++-------------+
+1 row in set (0.07 sec)
+
+mysql> select floor(5.55);
++-------------+
+| floor(5.55) |
++-------------+
+|           5 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select floor(1.23);
++-------------+
+| floor(1.23) |
++-------------+
+|           1 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select ln(0);
++-------+
+| ln(0) |
++-------+
+|  NULL |
++-------+
+1 row in set, 1 warning (0.07 sec)
+
+mysql> select ln(2);
++--------------------+
+| ln(2)              |
++--------------------+
+| 0.6931471805599453 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select ln(10);
++-------------------+
+| ln(10)            |
++-------------------+
+| 2.302585092994046 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select ln(9/3);
++--------------------+
+| ln(9/3)            |
++--------------------+
+| 1.0986122886681098 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select log10(2);
++--------------------+
+| log10(2)           |
++--------------------+
+| 0.3010299956639812 |
++--------------------+
+1 row in set (0.09 sec)
+
+mysql> select log10(10);
++-----------+
+| log10(10) |
++-----------+
+|         1 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select log10(20);
++--------------------+
+| log10(20)          |
++--------------------+
+| 1.3010299956639813 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select log10(100);
++------------+
+| log10(100) |
++------------+
+|          2 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select log2(1);
++---------+
+| log2(1) |
++---------+
+|       0 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select log2(19);
++-------------------+
+| log2(19)          |
++-------------------+
+| 4.247927513443585 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select log(1);
++--------+
+| log(1) |
++--------+
+|      0 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select log(-1);
++---------+
+| log(-1) |
++---------+
+|    NULL |
++---------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select log(8);
++--------------------+
+| log(8)             |
++--------------------+
+| 2.0794415416798357 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select 10000-890;
++-----------+
+| 10000-890 |
++-----------+
+|      9110 |
++-----------+
+1 row in set (0.07 sec)
+
+mysql> select (9/3) - (10/9);
++----------------+
+| (9/3) - (10/9) |
++----------------+
+|         1.8889 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select mod(9/8);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select 9 mod 8;
++---------+
+| 9 mod 8 |
++---------+
+|       1 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select 10000 mod 456;
++---------------+
+| 10000 mod 456 |
++---------------+
+|           424 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select 1000 % 345;
++------------+
+| 1000 % 345 |
++------------+
+|        310 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select oct(2);
++--------+
+| oct(2) |
++--------+
+| 2      |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select oct(8);
++--------+
+| oct(8) |
++--------+
+| 10     |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select oct(16);
++---------+
+| oct(16) |
++---------+
+| 20      |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select pi();
++----------+
+| pi()     |
++----------+
+| 3.141593 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select pi() div 3;
++------------+
+| pi() div 3 |
++------------+
+|          1 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select pi() /3;
++--------------+
+| pi() /3      |
++--------------+
+| 1.0471975512 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select pi() % 3;
++----------+
+| pi() % 3 |
++----------+
+| 0.141593 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select (pi() % 0.7) + 3;
++------------------+
+| (pi() % 0.7) + 3 |
++------------------+
+|         3.341593 |
++------------------+
+1 row in set (0.06 sec)
+
+mysql> select 10 pow 3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '3' at line 1
+mysql> select pow(10,3);
++-----------+
+| pow(10,3) |
++-----------+
+|      1000 |
++-----------+
+1 row in set (0.06 sec)
+
+mysql> select 10 power 3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '3' at line 1
+mysql> select power(10,4);
++-------------+
+| power(10,4) |
++-------------+
+|       10000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select radians(180/30);
++---------------------+
+| radians(180/30)     |
++---------------------+
+| 0.10471975511965978 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select rand();
++-------------------+
+| rand()            |
++-------------------+
+| 0.736012508846831 |
++-------------------+
+1 row in set (0.05 sec)
+
+mysql> select rand();
++--------------------+
+| rand()             |
++--------------------+
+| 0.6068812819261861 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select round(9.99);
++-------------+
+| round(9.99) |
++-------------+
+|          10 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select round(78.89);
++--------------+
+| round(78.89) |
++--------------+
+|           79 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select sign(98);
++----------+
+| sign(98) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sign(-98);
++-----------+
+| sign(-98) |
++-----------+
+|        -1 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sin(degrees(pi()/3));
++----------------------+
+| sin(degrees(pi()/3)) |
++----------------------+
+|  -0.3048106211022099 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(9);
++---------+
+| sqrt(9) |
++---------+
+|       3 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(1024);
++------------+
+| sqrt(1024) |
++------------+
+|         32 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select tan(pi()/3);
++--------------------+
+| tan(pi()/3)        |
++--------------------+
+| 1.7320508075688767 |
++--------------------+
+1 row in set (0.06 sec)
+
+mysql> select 10.09 * 78.98;
++---------------+
+| 10.09 * 78.98 |
++---------------+
+|      796.9082 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select truncate(1.9999999,4);
++-----------------------+
+| truncate(1.9999999,4) |
++-----------------------+
+|                1.9999 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select -9;
++----+
+| -9 |
++----+
+| -9 |
++----+
+1 row in set (0.01 sec)
+
+mysql> select -(-9);
++-------+
+| -(-9) |
++-------+
+|     9 |
++-------+
+1 row in set (0.00 sec)
+
+mysql>
