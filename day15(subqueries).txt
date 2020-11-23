@@ -1,0 +1,224 @@
+
+mysql> use vaishnavidb;
+Database changed
+mysql> create table employee(empId int(11) Primary Key, firstname varchar(20),lastname varchar(20),email varchar(30),phoneNo bigint, hiredate date, jobid int);
+ERROR 1050 (42S01): Table 'employee' already exists
+mysql> create table employeeTable(empId int(11) Primary Key, firstname varchar(20),lastname varchar(20),email varchar(30),phoneNo bigint, hiredate date, jobid int);
+Query OK, 0 rows affected, 1 warning (3.32 sec)
+
+
+mysql> insert into employeeTable values(161,'raja','sri','raja@gmail.com',777888999,'1999-09-09',1231);
+Query OK, 1 row affected (0.38 sec)
+
+mysql> insert into employeeTable values(162,'raja','hemanth','rh@gmail.com',777888768,'1999-09-10',1232);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into employeeTable values(163,'rani','sree','rs@gmail.com',774567867,'1998-09-17',1233);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into employeeTable values(164,'rio','raj','rr@gmail.com',774567845,'1999-10-17',1234);
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into employeeTable values(165,'rio','rakesh','rra@gmail.com',774567634,'1999-08-17',1235);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into employeeTable values(166,'ria','re','rrea@gmail.com',890765463,'1999-12-19',1236);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> alter table employeeTable add(esal float);
+Query OK, 0 rows affected (1.84 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update employeeTable set esal=56000 where empId=161;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employeeTable set esal=33000 where empId=162;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employeeTable set esal=40000 where empId=163;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employeeTable set esal=23000 where empId=164;
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employeeTable set esal=25000 where empId=165;
+Query OK, 1 row affected (0.21 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employeeTable set esal=32000 where empId=166;
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employeeTable;
++-------+-----------+----------+----------------+-----------+------------+-------+-------+
+| empId | firstname | lastname | email          | phoneNo   | hiredate   | jobid | esal  |
++-------+-----------+----------+----------------+-----------+------------+-------+-------+
+|   161 | raja      | sri      | raja@gmail.com | 777888999 | 1999-09-09 |  1231 | 56000 |
+|   162 | raja      | hemanth  | rh@gmail.com   | 777888768 | 1999-09-10 |  1232 | 33000 |
+|   163 | rani      | sree     | rs@gmail.com   | 774567867 | 1998-09-17 |  1233 | 40000 |
+|   164 | rio       | raj      | rr@gmail.com   | 774567845 | 1999-10-17 |  1234 | 23000 |
+|   165 | rio       | rakesh   | rra@gmail.com  | 774567634 | 1999-08-17 |  1235 | 25000 |
+|   166 | ria       | re       | rrea@gmail.com | 890765463 | 1999-12-19 |  1236 | 32000 |
++-------+-----------+----------+----------------+-----------+------------+-------+-------+
+6 rows in set (0.00 sec)
+
+
+mysql> select firstname,lastname from employeeTable where empId in(select empId from employeeTable where esal >(select esal from employeeTable where empId=163));
++-----------+----------+
+| firstname | lastname |
++-----------+----------+
+| raja      | sri      |
++-----------+----------+
+1 row in set (0.07 sec)
+
+mysql> insert into employeeTable values(167,'rethu','mali','rmea@gmail.com',890765678,'1998-12-23',1237,36000);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into employeeTable values(168,'chaithra','gowri','cgea@gmail.com',98765432,'1998-01-23',1238,34000);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> insert into employeeTable values(169,'chintha','gowri','cge@gmail.com',987654356,'1998-04-26',1239,37000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into employeeTable values(170,'sri','devi','sde@gmail.com',98764567,'1998-08-26',1240,37000);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from employeeTable;
++-------+-----------+----------+----------------+-----------+------------+-------+-------+
+| empId | firstname | lastname | email          | phoneNo   | hiredate   | jobid | esal  |
++-------+-----------+----------+----------------+-----------+------------+-------+-------+
+|   161 | raja      | sri      | raja@gmail.com | 777888999 | 1999-09-09 |  1231 | 56000 |
+|   162 | raja      | hemanth  | rh@gmail.com   | 777888768 | 1999-09-10 |  1232 | 33000 |
+|   163 | rani      | sree     | rs@gmail.com   | 774567867 | 1998-09-17 |  1233 | 40000 |
+|   164 | rio       | raj      | rr@gmail.com   | 774567845 | 1999-10-17 |  1234 | 23000 |
+|   165 | rio       | rakesh   | rra@gmail.com  | 774567634 | 1999-08-17 |  1235 | 25000 |
+|   166 | ria       | re       | rrea@gmail.com | 890765463 | 1999-12-19 |  1236 | 32000 |
+|   167 | rethu     | mali     | rmea@gmail.com | 890765678 | 1998-12-23 |  1237 | 36000 |
+|   168 | chaithra  | gowri    | cgea@gmail.com |  98765432 | 1998-01-23 |  1238 | 34000 |
+|   169 | chintha   | gowri    | cge@gmail.com  | 987654356 | 1998-04-26 |  1239 | 37000 |
+|   170 | sri       | devi     | sde@gmail.com  |  98764567 | 1998-08-26 |  1240 | 37000 |
++-------+-----------+----------+----------------+-----------+------------+-------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select firstname,lastname from employeeTable where empId in(select empId from employeeTable where esal >(select esal from employeeTable where empId=163));
++-----------+----------+
+| firstname | lastname |
++-----------+----------+
+| raja      | sri      |
++-----------+----------+
+1 row in set (0.01 sec)
+
+
+mysql> select concat(firstname,lastname) from employeeTable where empId in(select empId from employeeTable where esal >(select esal from employeeTable where empId=163));
++----------------------------+
+| concat(firstname,lastname) |
++----------------------------+
+| rajasri                    |
++----------------------------+
+1 row in set (0.05 sec)
+
+
+
+mysql> select concat(firstname,lastname),esal,jobid from employeeTable where designation in(select designation from employeeTable where empId=169);
++----------------------------+-------+-------+
+| concat(firstname,lastname) | esal  | jobid |
++----------------------------+-------+-------+
+| chaithragowri              | 34000 |  1238 |
+| chinthagowri               | 37000 |  1239 |
++----------------------------+-------+-------+
+
+2 rows in set (0.00 sec)
+
+ select concat(firstname,lastname),esal,jobid from employeeTable where esal in(select min(esal) from employeeTable);
++----------------------------+-------+-------+
+| concat(firstname,lastname) | esal  | jobid |
++----------------------------+-------+-------+
+| rioraj                     | 23000 |  1234 |
++----------------------------+-------+-------+
+
+242 (21000): Subquery returns more than 1 row
+mysql> select empid,concat(firstname,lastname) from employeeTable where esal>(select avg(esal) from employeeTable);
++-------+----------------------------+
+| empid | concat(firstname,lastname) |
++-------+----------------------------+
+|   161 | rajasri                    |
+|   163 | ranisree                   |
+|   167 | rethumali                  |
+|   169 | chinthagowri               |
+|   170 | sridevi                    |
++-------+----------------------------+
+5 rows in set (0.00 sec)
+
+
+mysql> select empid,concat(firstname,lastname),esal from employeeTable where empid in(select empid from employeeTable where report_trainee='shiva');
++-------+----------------------------+-------+
+| empid | concat(firstname,lastname) | esal  |
++-------+----------------------------+-------+
+|   161 | rajasri                    | 56000 |
+|   162 | rajahemanth                | 33000 |
+|   163 | ranisree                   | 40000 |
+|   164 | rioraj                     | 23000 |
+|   165 | riorakesh                  | 25000 |
+|   166 | riare                      | 32000 |
++-------+----------------------------+-------+
+6 rows in set (0.09 sec)
+
+
+mysql> select deptid,concat(firstname,lastname),department from employeeTable where deptid in(select deptid from employeeTable where  department='finance depart');
++--------+----------------------------+----------------+
+| deptid | concat(firstname,lastname) | department     |
++--------+----------------------------+----------------+
+|   1611 | rajasri                    | finance depart |
+|   1612 | rajahemanth                | finance depart |
+|   1613 | ranisree                   | finance depart |
+|   1614 | rioraj                     | finance depart |
+|   1615 | riorakesh                  | finance depart |
++--------+----------------------------+----------------+
+5 rows in set (0.42 sec)
+
+
+ select * from employeeTable where esal in(select esal from employeeTable where esal between 10000 and 30000);
++-------+-----------+----------+---------------+-----------+------------+-------+----------------+--------+
+| empId | firstname | lastname | email         | phoneNo   | hiredate   | esal  | department     | deptid |
++-------+-----------+----------+---------------+-----------+------------+-------+----------------+--------+
+|   164 | rio       | raj      | rr@gmail.com  | 774567845 | 1999-10-17 | 23000 | finance depart |   1614 |
+|   165 | rio       | rakesh   | rra@gmail.com | 774567634 | 1999-08-17 | 25000 | finance depart |   1615 |
++-------+-----------+----------+---------------+-----------+------------+-------+----------------+--------+
+2 rows in set (0.00 sec)
+
+
+mysql> select * from employeeTable where esal in(select esal from employeeTable where esal <=25000 and esal>=(select min(esal) from employeeTable));
++-------+-----------+----------+---------------+-----------+------------+-------+----------------+--------+
+| empId | firstname | lastname | email         | phoneNo   | hiredate   | esal  | department     | deptid |
++-------+-----------+----------+---------------+-----------+------------+-------+----------------+--------+
+|   164 | rio       | raj      | rr@gmail.com  | 774567845 | 1999-10-17 | 23000 | finance depart |   1614 |
+|   165 | rio       | rakesh   | rra@gmail.com | 774567634 | 1999-08-17 | 25000 | finance depart |   1615 |
++-------+-----------+----------+---------------+-----------+------------+-------+----------------+--------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> select * from employeeTable where empid in(select empid from employeeTable where empid=134 or empid=159 or empid=183);
++-------+-----------+----------+----------------+-----------+------------+-------+----------------+--------+
+| empId | firstname | lastname | email          | phoneNo   | hiredate   | esal  | department     | deptid |
++-------+-----------+----------+----------------+-----------+------------+-------+----------------+--------+
+|   134 | raja      | hemanth  | rh@gmail.com   | 777888768 | 1999-09-10 | 33000 | finance depart |   1612 |
+|   159 | rethu     | mali     | rmea@gmail.com | 890765678 | 1998-12-23 | 36000 | medical field  |   1617 |
+|   183 | sri       | devi     | sde@gmail.com  |  98764567 | 1998-08-26 | 37000 | medical field  |   1620 |
++-------+-----------+----------+----------------+-----------+------------+-------+----------------+--------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> select * from employeeTable where empid in(select empid from employeeTable where esal=30000 and traineeid=121);
++-------+-----------+----------+--------------+-----------+------------+-------+----------------+--------+-----------+
+| empId | firstname | lastname | email        | phoneNo   | hiredate   | esal  | department     | deptid | traineeid |
++-------+-----------+----------+--------------+-----------+------------+-------+----------------+--------+-----------+
+|   134 | raja      | hemanth  | rh@gmail.com | 777888768 | 1999-09-10 | 30000 | finance depart |   1612 |       121 |
+|   164 | rio       | raj      | rr@gmail.com | 774567845 | 1999-10-17 | 30000 | finance depart |   1614 |       121 |
++-------+-----------+----------+--------------+-----------+------------+-------+----------------+--------+-----------+
+2 rows in set (0.00 sec)
