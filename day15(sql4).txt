@@ -1,0 +1,400 @@
+mysql> create database onlineFoodOrdering;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    53
+Current database: vaishnavidb
+
+Query OK, 1 row affected (0.55 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| onlinefoodordering |
+| performance_schema |
+| sakila             |
+| sys                |
+| vaishnavidb        |
+| world              |
++--------------------+
+8 rows in set (0.11 sec)
+
+mysql> use onlineFoodOrdering;
+Database changed
+mysql> create table Restaurant(RestaurantId int primary key AUTOINCREMENT,RestaurantName varchar(20),RestaurantAddress varchar(20),RestaurantCity varchar(20),ContactNo int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTOINCREMENT,RestaurantName varchar(20),RestaurantAddress varchar(20),Restauran' at line 1
+mysql> create table Restaurant(RestaurantId int primary key AUTO_INCREMENT,RestaurantName varchar(20),RestaurantAddress varchar(20),RestaurantCity varchar(20),ContactNo int);
+Query OK, 0 rows affected (2.23 sec)
+
+mysql> create table RMenuItems(MenuId int primary key AUTO_INCREMENT,MenuName varchar(20),MenuCategory varchar(20),MenuPrice float,Menu);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> create table RMenuItems(MenuId int primary key AUTO_INCREMENT,MenuName varchar(20),MenuCategory varchar(20),MenuPrice float,MenuDesc varchar(20),RestaurantId int, foreign key(RestaurantId) references Restaurant(RestaurantId));
+Query OK, 0 rows affected (1.97 sec)
+
+mysql> create table Customers(cusId int primary key AUTO_INCREMENT,cusName varchar(20),custcity varchar(20),cusDOB date,cusgender varchar(20) default 'male',custpwd varchar(10));
+Query OK, 0 rows affected (1.30 sec)
+
+mysql> create table Orders(OrderId int primary key AUTO_INCREMENT,cusId int,orderDate date,deliveryAdd varchar(30),orderstatus varchar(20),foreign key(cusId) references Customers(cusId));
+Query OK, 0 rows affected (1.01 sec)
+
+mysql> create table OrderMenus(OderId int,MenuId int,MenuQty int, MenuPrice float,foreign key(OrderId) reference Orders(OrderId),foreign key(MenuId) references RMenuItems(MenuId));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference Orders(OrderId),foreign key(MenuId) references RMenuItems(MenuId))' at line 1
+mysql> create table OrderMenus(OderId int,MenuId int,MenuQty int, MenuPrice float,foreign key(OrderId) references Orders(OrderId),foreign key(MenuId) references RMenuItems(MenuId));
+ERROR 1072 (42000): Key column 'OrderId' doesn't exist in table
+mysql> create table OrderMenus(OrderId int,MenuId int,MenuQty int, MenuPrice float,foreign key(OrderId) references Orders(OrderId),foreign key(MenuId) references RMenuItems(MenuId));
+Query OK, 0 rows affected (1.47 sec)
+
+mysql> desc Reastaurant;
+ERROR 1146 (42S02): Table 'onlinefoodordering.reastaurant' doesn't exist
+mysql> desc restaurant;
++-------------------+-------------+------+-----+---------+----------------+
+| Field             | Type        | Null | Key | Default | Extra          |
++-------------------+-------------+------+-----+---------+----------------+
+| RestaurantId      | int         | NO   | PRI | NULL    | auto_increment |
+| RestaurantName    | varchar(20) | YES  |     | NULL    |                |
+| RestaurantAddress | varchar(20) | YES  |     | NULL    |                |
+| RestaurantCity    | varchar(20) | YES  |     | NULL    |                |
+| ContactNo         | int         | YES  |     | NULL    |                |
++-------------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.38 sec)
+
+mysql> desc RMenuItems;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| MenuId       | int         | NO   | PRI | NULL    | auto_increment |
+| MenuName     | varchar(20) | YES  |     | NULL    |                |
+| MenuCategory | varchar(20) | YES  |     | NULL    |                |
+| MenuPrice    | float       | YES  |     | NULL    |                |
+| MenuDesc     | varchar(20) | YES  |     | NULL    |                |
+| RestaurantId | int         | YES  | MUL | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+6 rows in set (0.01 sec)
+
+mysql> desc Customers;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| cusId     | int         | NO   | PRI | NULL    | auto_increment |
+| cusName   | varchar(20) | YES  |     | NULL    |                |
+| custcity  | varchar(20) | YES  |     | NULL    |                |
+| cusDOB    | date        | YES  |     | NULL    |                |
+| cusgender | varchar(20) | YES  |     | male    |                |
+| custpwd   | varchar(10) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.01 sec)
+
+mysql> desc Orders;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| OrderId     | int         | NO   | PRI | NULL    | auto_increment |
+| cusId       | int         | YES  | MUL | NULL    |                |
+| orderDate   | date        | YES  |     | NULL    |                |
+| deliveryAdd | varchar(30) | YES  |     | NULL    |                |
+| orderstatus | varchar(20) | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> desc OrderMenus;
++-----------+-------+------+-----+---------+-------+
+| Field     | Type  | Null | Key | Default | Extra |
++-----------+-------+------+-----+---------+-------+
+| OrderId   | int   | YES  | MUL | NULL    |       |
+| MenuId    | int   | YES  | MUL | NULL    |       |
+| MenuQty   | int   | YES  |     | NULL    |       |
+| MenuPrice | float | YES  |     | NULL    |       |
++-----------+-------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc restaurant;
++-------------------+-------------+------+-----+---------+----------------+
+| Field             | Type        | Null | Key | Default | Extra          |
++-------------------+-------------+------+-----+---------+----------------+
+| RestaurantId      | int         | NO   | PRI | NULL    | auto_increment |
+| RestaurantName    | varchar(20) | YES  |     | NULL    |                |
+| RestaurantAddress | varchar(20) | YES  |     | NULL    |                |
+| RestaurantCity    | varchar(20) | YES  |     | NULL    |                |
+| ContactNo         | int         | YES  |     | NULL    |                |
++-------------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+
+
+mysql> desc restaurant;
++-------------------+-------------+------+-----+---------+----------------+
+| Field             | Type        | Null | Key | Default | Extra          |
++-------------------+-------------+------+-----+---------+----------------+
+| RestaurantId      | int         | NO   | PRI | NULL    | auto_increment |
+| RestaurantName    | varchar(20) | YES  |     | NULL    |                |
+| RestaurantAddress | varchar(20) | YES  |     | NULL    |                |
+| RestaurantCity    | varchar(20) | YES  |     | NULL    |                |
+| ContactNo         | int         | YES  |     | NULL    |                |
++-------------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> insert into restaurant values(1,'bhavan','chennai east','chennai',456789);
+Query OK, 1 row affected (0.26 sec)
+
+mysql> insert into restaurant(RestaurantName,RestaurantAddress,RestaurantCity,ContactNo) values('bhavan','chennai east','chennai',456789);
+Query OK, 1 row affected (0.44 sec)
+
+mysql> insert into restaurant(RestaurantName,RestaurantAddress,RestaurantCity,ContactNo) values('vijaya bhavan','chennai east','chennai',456732);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into restaurant(RestaurantName,RestaurantAddress,RestaurantCity,ContactNo) values('adayar bhavan','chennai adayar','chennai',453216);
+Query OK, 1 row affected (0.45 sec)
+
+mysql> select * from restaurant;
++--------------+----------------+-------------------+----------------+-----------+
+| RestaurantId | RestaurantName | RestaurantAddress | RestaurantCity | ContactNo |
++--------------+----------------+-------------------+----------------+-----------+
+|            1 | bhavan         | chennai east      | chennai        |    456789 |
+|            2 | bhavan         | chennai east      | chennai        |    456789 |
+|            3 | vijaya bhavan  | chennai east      | chennai        |    456732 |
+|            4 | adayar bhavan  | chennai adayar    | chennai        |    453216 |
++--------------+----------------+-------------------+----------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> desc RMenuItems;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| MenuId       | int         | NO   | PRI | NULL    | auto_increment |
+| MenuName     | varchar(20) | YES  |     | NULL    |                |
+| MenuCategory | varchar(20) | YES  |     | NULL    |                |
+| MenuPrice    | float       | YES  |     | NULL    |                |
+| MenuDesc     | varchar(20) | YES  |     | NULL    |                |
+| RestaurantId | int         | YES  | MUL | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+6 rows in set (0.08 sec)
+
+mysql> insert into RMenuItems(MenuName,MenuCategory,MenuPrice,MenuDesc,RestaurantId)values('dosa','tiffin',40,'tiffin item',1);
+Query OK, 1 row affected (0.27 sec)
+
+mysql> delete from restaurant where RestaurantId=1;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`onlinefoodordering`.`rmenuitems`, CONSTRAINT `rmenuitems_ibfk_1` FOREIGN KEY (`RestaurantId`) REFERENCES `restaurant` (`RestaurantId`))
+mysql> delete from restaurant where RestaurantAddress='chennai east';
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`onlinefoodordering`.`rmenuitems`, CONSTRAINT `rmenuitems_ibfk_1` FOREIGN KEY (`RestaurantId`) REFERENCES `restaurant` (`RestaurantId`))
+mysql>
+mysql> insert into RMenuItems(MenuName,MenuCategory,MenuPrice,MenuDesc,RestaurantId)values('noodles','starter',60,'starter item',1);
+Query OK, 1 row affected (0.44 sec)
+
+mysql> insert into RMenuItems(MenuName,MenuCategory,MenuPrice,MenuDesc,RestaurantId)values('meals','lunch',75,'lunch item',4);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into RMenuItems(MenuName,MenuCategory,MenuPrice,MenuDesc,RestaurantId)values('icecream','dessert',25,'dessert item',5);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`onlinefoodordering`.`rmenuitems`, CONSTRAINT `rmenuitems_ibfk_1` FOREIGN KEY (`RestaurantId`) REFERENCES `restaurant` (`RestaurantId`))
+mysql> insert into RMenuItems(MenuName,MenuCategory,MenuPrice,MenuDesc,RestaurantId)values('icecream','dessert',25,'dessert item',3);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> select * from RMenuItems;
++--------+----------+--------------+-----------+--------------+--------------+
+| MenuId | MenuName | MenuCategory | MenuPrice | MenuDesc     | RestaurantId |
++--------+----------+--------------+-----------+--------------+--------------+
+|      1 | dosa     | tiffin       |        40 | tiffin item  |            1 |
+|      2 | noodles  | starter      |        60 | starter item |            1 |
+|      3 | meals    | lunch        |        75 | lunch item   |            4 |
+|      5 | icecream | dessert      |        25 | dessert item |            3 |
++--------+----------+--------------+-----------+--------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> desc Customers;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| cusId     | int         | NO   | PRI | NULL    | auto_increment |
+| cusName   | varchar(20) | YES  |     | NULL    |                |
+| custcity  | varchar(20) | YES  |     | NULL    |                |
+| cusDOB    | date        | YES  |     | NULL    |                |
+| cusgender | varchar(20) | YES  |     | male    |                |
+| custpwd   | varchar(10) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.08 sec)
+
+mysql> insert into Customers(cusName,cuscity,cusDOB,cusgender,custpwd) values('raja','chennai','1990-07-18','male','raja12');
+ERROR 1054 (42S22): Unknown column 'cuscity' in 'field list'
+mysql> insert into Customers(cusName,custcity,cusDOB,cusgender,custpwd) values('raja','chennai','1990-07-18','male','raja12');
+Query OK, 1 row affected (0.43 sec)
+
+mysql> insert into Customers(cusName,custcity,cusDOB,cusgender,custpwd) values('rani','chennai','1992-07-14','female','rani13');
+Query OK, 1 row affected (0.49 sec)
+
+mysql> insert into Customers(cusName,custcity,cusDOB,cusgender,custpwd) values('abi','chennai','1992-08-14','female','abi14');
+Query OK, 1 row affected (0.43 sec)
+
+mysql> select * from customers;
++-------+---------+----------+------------+-----------+---------+
+| cusId | cusName | custcity | cusDOB     | cusgender | custpwd |
++-------+---------+----------+------------+-----------+---------+
+|     1 | raja    | chennai  | 1990-07-18 | male      | raja12  |
+|     2 | rani    | chennai  | 1992-07-14 | female    | rani13  |
+|     3 | abi     | chennai  | 1992-08-14 | female    | abi14   |
++-------+---------+----------+------------+-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> desc Orders;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| OrderId     | int         | NO   | PRI | NULL    | auto_increment |
+| cusId       | int         | YES  | MUL | NULL    |                |
+| orderDate   | date        | YES  |     | NULL    |                |
+| deliveryAdd | varchar(30) | YES  |     | NULL    |                |
+| orderstatus | varchar(20) | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.07 sec)
+
+mysql> insert into Orders(cusId,orderDate,deliveryadd,orderstatus)values(2,'2020-11-09','adayar','yet to deliver');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into Orders(cusId,orderDate,deliveryadd,orderstatus)values(2,'2020-11-19','adayar','delivered');
+Query OK, 1 row affected (0.55 sec)
+
+mysql> insert into Orders(cusId,orderDate,deliveryadd,orderstatus)values(3,'2020-11-19','omr','delivered');
+Query OK, 1 row affected (0.48 sec)
+
+mysql> insert into Orders(cusId,orderDate,deliveryadd,orderstatus)values(3,'2020-11-20','omr','yet to deliver');
+Query OK, 1 row affected (0.48 sec)
+
+mysql> select * from Orders;
++---------+-------+------------+-------------+----------------+
+| OrderId | cusId | orderDate  | deliveryAdd | orderstatus    |
++---------+-------+------------+-------------+----------------+
+|       1 |     2 | 2020-11-09 | adayar      | yet to deliver |
+|       2 |     2 | 2020-11-19 | adayar      | delivered      |
+|       3 |     3 | 2020-11-19 | omr         | delivered      |
+|       4 |     3 | 2020-11-20 | omr         | yet to deliver |
++---------+-------+------------+-------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> desc OrderMenus;
++-----------+-------+------+-----+---------+-------+
+| Field     | Type  | Null | Key | Default | Extra |
++-----------+-------+------+-----+---------+-------+
+| OrderId   | int   | YES  | MUL | NULL    |       |
+| MenuId    | int   | YES  | MUL | NULL    |       |
+| MenuQty   | int   | YES  |     | NULL    |       |
+| MenuPrice | float | YES  |     | NULL    |       |
++-----------+-------+------+-----+---------+-------+
+4 rows in set (0.10 sec)
+
+mysql> insert into OrderMenus values(1,1,2,80);
+Query OK, 1 row affected (0.28 sec)
+
+mysql> insert into OrderMenus values(2,3,1,75);
+Query OK, 1 row affected (0.49 sec)
+
+mysql> insert into OrderMenus values(4,4,1,25);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`onlinefoodordering`.`ordermenus`, CONSTRAINT `ordermenus_ibfk_2` FOREIGN KEY (`MenuId`) REFERENCES `rmenuitems` (`MenuId`))
+mysql> insert into OrderMenus values(4,5,1,25);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from OrderMenus;
++---------+--------+---------+-----------+
+| OrderId | MenuId | MenuQty | MenuPrice |
++---------+--------+---------+-----------+
+|       1 |      1 |       2 |        80 |
+|       2 |      3 |       1 |        75 |
+|       4 |      5 |       1 |        25 |
++---------+--------+---------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from restaurant where Restaurantcity='chennai';
++--------------+----------------+-------------------+----------------+-----------+
+| RestaurantId | RestaurantName | RestaurantAddress | RestaurantCity | ContactNo |
++--------------+----------------+-------------------+----------------+-----------+
+|            1 | bhavan         | chennai east      | chennai        |    456789 |
+|            2 | bhavan         | chennai east      | chennai        |    456789 |
+|            4 | adayar bhavan  | chennai adayar    | chennai        |    453216 |
++--------------+----------------+-------------------+----------------+-----------+
+3 rows in set (0.00 sec)
+
+
+
+
+mysql> select restaurantName,MenuId,MenuName,MenuPrice from Restaurant cross join RMenUItems;
++----------------+--------+----------+-----------+
+| restaurantName | MenuId | MenuName | MenuPrice |
++----------------+--------+----------+-----------+
+| bhavan         |      1 | dosa     |        40 |
+| bhavan         |      1 | dosa     |        40 |
+| vijaya bhavan  |      1 | dosa     |        40 |
+| adayar bhavan  |      1 | dosa     |        40 |
+| bhavan         |      2 | noodles  |        60 |
+| bhavan         |      2 | noodles  |        60 |
+| vijaya bhavan  |      2 | noodles  |        60 |
+| adayar bhavan  |      2 | noodles  |        60 |
+| bhavan         |      3 | meals    |        75 |
+| bhavan         |      3 | meals    |        75 |
+| vijaya bhavan  |      3 | meals    |        75 |
+| adayar bhavan  |      3 | meals    |        75 |
+| bhavan         |      5 | icecream |        25 |
+| bhavan         |      5 | icecream |        25 |
+| vijaya bhavan  |      5 | icecream |        25 |
+| adayar bhavan  |      5 | icecream |        25 |
++----------------+--------+----------+-----------+
+16 rows in set (0.00 sec)
+
+
+
+
+mysql> select restaurantName,MenuId,MenuName,MenuPrice from Restaurant,RMenuItems where RestaurantCity='chennai';
++----------------+--------+----------+-----------+
+| restaurantName | MenuId | MenuName | MenuPrice |
++----------------+--------+----------+-----------+
+| bhavan         |      1 | dosa     |        40 |
+| bhavan         |      1 | dosa     |        40 |
+| adayar bhavan  |      1 | dosa     |        40 |
+| bhavan         |      2 | noodles  |        60 |
+| bhavan         |      2 | noodles  |        60 |
+| adayar bhavan  |      2 | noodles  |        60 |
+| bhavan         |      3 | meals    |        75 |
+| bhavan         |      3 | meals    |        75 |
+| adayar bhavan  |      3 | meals    |        75 |
+| bhavan         |      5 | icecream |        25 |
+| bhavan         |      5 | icecream |        25 |
+| adayar bhavan  |      5 | icecream |        25 |
++----------------+--------+----------+-----------+
+12 rows in set (0.09 sec)
+
+
+mysql> select * from customers inner join Orders on customers.cusid=orders.cusid where customers.cusId=3;
++-------+---------+----------+------------+-----------+---------+---------+-------+------------+-------------+----------------+
+| cusId | cusName | custcity | cusDOB     | cusgender | custpwd | OrderId | cusId | orderDate  | deliveryAdd | orderstatus    |
++-------+---------+----------+------------+-----------+---------+---------+-------+------------+-------------+----------------+
+|     3 | abi     | chennai  | 1992-08-14 | female    | abi14   |       3 |     3 | 2020-11-19 | omr         | delivered      |
+|     3 | abi     | chennai  | 1992-08-14 | female    | abi14   |       4 |     3 | 2020-11-20 | omr         | yet to deliver |
++-------+---------+----------+------------+-----------+---------+---------+-------+------------+-------------+----------------+
+2 rows in set (0.05 sec)
+
+
+
+mysql> select * from Orders inner join Ordermenus on Orders.OrderId=OrderMenus.OrderId where Orders.cusId=2;
++---------+-------+------------+-------------+----------------+---------+--------+---------+-----------+
+| OrderId | cusId | orderDate  | deliveryAdd | orderstatus    | OrderId | MenuId | MenuQty | MenuPrice |
++---------+-------+------------+-------------+----------------+---------+--------+---------+-----------+
+|       1 |     2 | 2020-11-09 | adayar      | yet to deliver |       1 |      1 |       2 |        80 |
+|       2 |     2 | 2020-11-19 | adayar      | delivered      |       2 |      3 |       1 |        75 |
++---------+-------+------------+-------------+----------------+---------+--------+---------+-----------+
+2 rows in set (0.00 sec)
+
+
+mysql> select * from restaurant where restaurant.restaurantId not in(select restaurantId from rmenuitems where menuid in(select menuid from ordermenus));
++--------------+----------------+-------------------+----------------+-----------+
+| RestaurantId | RestaurantName | RestaurantAddress | RestaurantCity | ContactNo |
++--------------+----------------+-------------------+----------------+-----------+
+|            2 | bhavan         | chennai east      | chennai        |    456789 |
+|            5 | anand bhavan   | chennai adayar    | chennai        |    432567 |
++--------------+----------------+-------------------+----------------+-----------+
+2 rows in set (0.00 sec)
