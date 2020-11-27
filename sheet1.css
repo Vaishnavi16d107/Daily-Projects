@@ -1,0 +1,268 @@
+.intro{
+	width:50%;
+	height:100%;
+	background-color:orange;
+
+}
+
+.name1,.name2{
+	
+	background-color:blue;
+     
+
+}
+
+#firstpara{
+                   color:red;
+}
+
+*{
+      
+                color:red;
+                background-color:yellow;
+
+
+}
+
+p{
+	font-family:verdana;
+
+}
+
+div,p{
+	font-size:18px;
+}
+
+div p{
+	font-style:italic;
+}
+
+div>p{
+	font-family:times new roman;
+}
+
+div+p{
+	font-family:Helvetica;
+}
+
+p~ul{
+             font-family:times new roman;
+             font-style:italic;
+}
+
+[target]{
+
+	font-family:times new roman;
+	color:blue;
+	font-style:bold;
+}
+
+[target=_blank]{
+
+	font-family:Helvetica;
+
+}
+
+[title~=flower]{
+		background-color:green;
+
+}
+
+
+[lang|en]{
+ 	background-color:pink;
+
+}
+a[href^="https"]{
+                    
+                        background-color:blue;
+
+}
+
+a[href$=".pdf"]{
+    
+                    background-color:green;
+	 font-size:30px;
+
+}
+
+p[class*="w3schools"]{
+ 
+	font-family:times new roman;
+}
+
+a:active{
+  
+           background-color:pink;
+
+}
+
+p::after{
+   
+         content:"------to be remembered";
+
+}
+
+p::before{
+
+           content:"this para begins------";
+}
+
+input:checked{
+
+             height:50px;
+             width:50px;
+
+}
+
+input:default{
+      
+	box-shadow:2px 2px 2px green;
+
+}
+
+input:disabled{
+
+	background-color:grey;
+
+
+}
+
+input:enabled{
+   	background-color:pink;
+}
+
+p:first-child{
+ 
+	text-decoration:overline;
+	
+
+}
+
+p::first-letter{
+
+	font-size:40px;
+	color:lime;
+
+}
+
+p::first-line{
+	color:black;
+
+}
+
+p:first-of-type{
+
+ 	background-color:blue;
+}
+
+input:focus{
+	background-color:lime;
+
+}
+
+div#div1:hover{
+
+                  height:300px;
+                  width:200px;
+	border:20px solid blue;
+	border-radius:20px;
+}
+
+input:in-range{
+	border:2px solid red;
+
+}
+
+
+input:invalid{
+	border:4px dotted red;
+
+}
+
+p:lang(are){
+	
+              background-color:pink;
+}
+
+p {
+  color: #000000;
+}
+
+:not(p) {
+  color: #ff0000;
+}
+
+p:nth-child(2) {
+  background: lime;
+}
+
+p:nth-last-child(2) {
+  background: red;
+}
+
+
+p:nth-last-of-type(3) {
+  background: lime;
+}
+
+p:nth-of-type(5) {
+  background: pink;
+}
+
+p:only-of-type {
+  background: grey;
+}
+
+p:only-child {
+  background: white;
+}
+
+
+input:optional {
+  background-color: red;
+}
+
+input:out-of-range {
+  border: 2px solid green;
+}
+
+input::placeholder {
+  color: green;
+}
+
+input:read-only {
+  background-color: yellow;
+}
+
+
+input:read-write {
+  background-color: pink;
+}
+
+
+input:required {
+  background-color: grey;
+}
+
+:root {
+  background: #ff22aa;
+}
+
+::selection {
+  color: red;
+}
+
+
+:target {
+  border: 2px solid #D4D4D4;
+  background-color: #e5eecc;
+}
+
+input:valid {
+  background-color: blue;
+}
+
+a:visited {
+  color: pink;
+}
