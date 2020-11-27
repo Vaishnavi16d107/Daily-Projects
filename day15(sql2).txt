@@ -1,0 +1,385 @@
+
+mysql> desc AccountInfo;
++-----------------+---------------------------------+------+-----+---------+-------+
+| Field           | Type                            | Null | Key | Default | Extra |
++-----------------+---------------------------------+------+-----+---------+-------+
+| accountId       | bigint                          | NO   | PRI | NULL    |       |
+| customerId      | int                             | YES  | MUL | NULL    |       |
+| accountType     | enum('open','closed','blocked') | YES  |     | NULL    |       |
+| accountBalance  | float                           | YES  |     | NULL    |       |
+| accountOpenDate | date                            | YES  |     | NULL    |       |
+| accountstatus   | varchar(10)                     | YES  |     | closed  |       |
++-----------------+---------------------------------+------+-----+---------+-------+
+6 rows in set (0.08 sec)
+
+mysql> alter table TransactionInfo modify TransactionType enum('D','C');
+Query OK, 0 rows affected (4.96 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc AccountInfo;
++-----------------+---------------------------------+------+-----+---------+-------+
+| Field           | Type                            | Null | Key | Default | Extra |
++-----------------+---------------------------------+------+-----+---------+-------+
+| accountId       | bigint                          | NO   | PRI | NULL    |       |
+| customerId      | int                             | YES  | MUL | NULL    |       |
+| accountType     | enum('open','closed','blocked') | YES  |     | NULL    |       |
+| accountBalance  | float                           | YES  |     | NULL    |       |
+| accountOpenDate | date                            | YES  |     | NULL    |       |
+| accountstatus   | varchar(10)                     | YES  |     | closed  |       |
++-----------------+---------------------------------+------+-----+---------+-------+
+6 rows in set (0.04 sec)
+
+mysql> desc CustomersInfo;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| customerId       | int         | NO   | PRI | NULL    |       |
+| customername     | varchar(20) | YES  |     | NULL    |       |
+| customercity     | varchar(10) | YES  |     | NULL    |       |
+| cutomeraddress   | varchar(30) | NO   |     | NULL    |       |
+| customermobileno | bigint      | YES  | UNI | NULL    |       |
+| pan              | varchar(30) | YES  | UNI | NULL    |       |
+| customerpassword | varchar(10) | NO   |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> insert into CustomersInfo values(14135,'raja','chennai','perumbakam',123456,'BD12345','raja1413');5
+Query OK, 1 row affected (0.55 sec)
+
+mysql> insert into CustomersInfo values(14136,'rani','chennai','perumbakam',123478,'BD12346','rani14136');
+Query OK, 1 row affected (1.36 sec)
+
+mysql> insert into CustomersInfo values(14137,'abi','chennai','sholingnalur',123469,'BD12347','abi14137');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into CustomersInfo values(14138,'ani','chennai','sholingnalur',123471,'BD12355','ani14138');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into CustomersInfo values(14139,'ajay','chennai','thambaram',123476,'BD12353','ajay14139');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into CustomersInfo values(14140,'ari','madurai','palanganatham',123477,'BD12358','ari14140');
+Query OK, 1 row affected (0.25 sec)
+
+mysql> select * from CustomersINfo;
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
+|      14138 | ani          | chennai      | sholingnalur   |           123471 | BD12355 | ani14138         |
+|      14139 | ajay         | chennai      | thambaram      |           123476 | BD12353 | ajay14139        |
+|      14140 | ari          | madurai      | palanganatham  |           123477 | BD12358 | ari14140         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> select count(customercity) as cities from CustomersInfo;
++--------+
+| cities |
++--------+
+|      6 |
++--------+
+1 row in set (0.07 sec)
+
+mysql> select distinct(customercity) as cities from CustomersInfo;
++---------+
+| cities  |
++---------+
+| chennai |
+| madurai |
++---------+
+2 rows in set (0.05 sec)
+
+mysql> select * from CustomersINfo where customername like 'r%';
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+2 rows in set (0.05 sec)
+
+mysql> select * from CustomersINfo where customername like '%r%';
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
+|      14140 | ari          | madurai      | palanganatham  |           123477 | BD12358 | ari14140         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * from CustomersINfo where customername='raja' or pan like '%6';
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from CustomersInfo;
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
+|      14138 | ani          | chennai      | sholingnalur   |           123471 | BD12355 | ani14138         |
+|      14139 | ajay         | chennai      | thambaram      |           123476 | BD12353 | ajay14139        |
+|      14140 | ari          | madurai      | palanganatham  |           123477 | BD12358 | ari14140         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from CustomersInfo where pan between 'BD12343' and 'BD12356';
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
+|      14139 | ajay         | chennai      | thambaram      |           123476 | BD12353 | ajay14139        |
+|      14138 | ani          | chennai      | sholingnalur   |           123471 | BD12355 | ani14138         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+5 rows in set (0.05 sec)
+
+mysql> select * from CustomersInfo where pan< 'BD123450';
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+1 row in set (0.00 sec)
+
+
+mysql> select * from CustomersInfo where pan< 'BD123450'and pan> 'BD12344';
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from CustomersInfo where pan< 'BD12350'and pan> 'BD12344';
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from CustomersInfo limit 3;
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * from CustomersInfo order by customername asc, customerId desc;
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
+|      14139 | ajay         | chennai      | thambaram      |           123476 | BD12353 | ajay14139        |
+|      14138 | ani          | chennai      | sholingnalur   |           123471 | BD12355 | ani14138         |
+|      14140 | ari          | madurai      | palanganatham  |           123477 | BD12358 | ari14140         |
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from CustomersInfo order by customername asc, customerId desc;
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14139 | abi          | chennai      | thambaram      |           123476 | BD12353 | ajay14139        |
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
+|      14138 | ani          | chennai      | sholingnalur   |           123471 | BD12355 | ani14138         |
+|      14140 | ari          | madurai      | palanganatham  |           123477 | BD12358 | ari14140         |
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+6 rows in set (0.06 sec)
+
+
+mysql> select * from CustomersInfo where customername in('abi','ari','raja');
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
+|      14139 | abi          | chennai      | thambaram      |           123476 | BD12353 | ajay14139        |
+|      14140 | ari          | madurai      | palanganatham  |           123477 | BD12358 | ari14140         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+4 rows in set (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| onlinefoodordering |
+| performance_schema |
+| sakila             |
+| sys                |
+| vaishnavidb        |
+| world              |
++--------------------+
+8 rows in set (0.11 sec)
+
+
+
+mysql> select * from customersinfo;
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+| customerId | customername | customercity | cutomeraddress | customermobileno | pan     | customerpassword |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+|      14135 | raja         | chennai      | perumbakam     |           123456 | BD12345 | raja1413         |
+|      14136 | rani         | chennai      | perumbakam     |           123478 | BD12346 | rani14136        |
+|      14137 | abi          | chennai      | sholingnalur   |           123469 | BD12347 | abi14137         |
+|      14138 | ani          | chennai      | sholingnalur   |           123471 | BD12355 | ani14138         |
+|      14139 | abi          | chennai      | thambaram      |           123476 | BD12353 | ajay14139        |
+|      14140 | ari          | madurai      | palanganatham  |           123477 | BD12358 | ari14140         |
+|     141341 | vijaya       | madurai      | alagappa       |           123480 | BD12359 | vij14132         |
+|     141342 | vihan        | madurai      | alagappa       |           123483 | BD12360 | vih14156         |
+|     141343 | vishi        | madurai      | pykara         |           123485 | BD12363 | vis14157         |
+|     141344 | yoga         | madurai      | pykara         |           123487 | BD12366 | yog14165         |
++------------+--------------+--------------+----------------+------------------+---------+------------------+
+
+
+mysql> select * from accountinfo;
++-----------+------------+-------------+----------------+-----------------+---------------+
+| accountId | customerId | accountType | accountBalance | accountOpenDate | accountstatus |
++-----------+------------+-------------+----------------+-----------------+---------------+
+|       100 |      14135 | savings     |          12000 | 2019-09-09      | open          |
+|       101 |      14136 | savings     |          20000 | 2019-09-29      | open          |
+|       102 |      14137 | salary      |          25000 | 2019-09-19      | open          |
+|       103 |      14137 | savings     |         500000 | 2019-10-11      | blocked       |
+|       104 |      14138 | savings     |            100 | 2019-10-04      | closed        |
+|       105 |      14139 | salary      |          10000 | 2019-07-07      | open          |
+|       106 |      14140 | salary      |         100000 | 2019-07-09      | blocked       |
+|       107 |     141341 | savings     |           5000 | 2019-07-23      | open          |
+|       108 |     141342 | salary      |          15000 | 2019-05-09      | closed        |
+|       109 |     141343 | salary      |            500 | 2019-05-12      | closed        |
+|       110 |     141344 | savings     |          10000 | 2019-04-12      | blocked       |
++-----------+------------+-------------+----------------+-----------------+---------------+
+
+
+
+mysql> select * from transactioninfo;
++---------------+-----------+-----------------+--------+-----------------+
+| TransactionId | accountId | TransactionType | amount | transactionDate |
++---------------+-----------+-----------------+--------+-----------------+
+|           200 |       100 | D               |   2000 | 2019-10-01      |
+|           201 |       100 | C               |  20000 | 2019-10-20      |
+|           202 |       100 | D               |   1000 | 2019-10-23      |
+|           203 |       103 | D               | 500000 | 2019-09-23      |
+|           204 |       107 | C               | 500000 | 2019-10-08      |
+|           205 |       107 | D               |   5000 | 2019-10-18      |
+|           206 |       104 | D               |   5000 | 2019-09-29      |
+|           207 |       110 | D               |   5000 | 2019-12-01      |
+|           208 |       101 | C               |  50000 | 2019-11-01      |
+|           209 |       101 | D               |    500 | 2019-11-10      |
+|           210 |       101 | C               |   5000 | 2019-11-15      |
++---------------+-----------+-----------------+--------+-----------------+
+
+
+mysql> select * from transactioninfo where accountId=100  limit 5;
++---------------+-----------+-----------------+--------+-----------------+
+| TransactionId | accountId | TransactionType | amount | transactionDate |
++---------------+-----------+-----------------+--------+-----------------+
+|           200 |       100 | D               |   2000 | 2019-10-01      |
+|           201 |       100 | C               |  20000 | 2019-10-20      |
+|           202 |       100 | D               |   1000 | 2019-10-23      |
+|           203 |       100 | D               | 500000 | 2019-09-23      |
+|           204 |       100 | C               | 500000 | 2019-10-08      |
++---------------+-----------+-----------------+--------+-----------------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> select * from transactioninfo where accountId=100 and transactionDate between '2019-09-01' and '2019-10-01';
++---------------+-----------+-----------------+--------+-----------------+
+| TransactionId | accountId | TransactionType | amount | transactionDate |
++---------------+-----------+-----------------+--------+-----------------+
+|           200 |       100 | D               |   2000 | 2019-10-01      |
+|           203 |       100 | D               | 500000 | 2019-09-23      |
++---------------+-----------+-----------------+--------+-----------------+
+
+
+mysql> select * from accountinfo where customerId=14135 or customerId=141341;
++-----------+------------+-------------+----------------+-----------------+---------------+
+| accountId | customerId | accountType | accountBalance | accountOpenDate | accountstatus |
++-----------+------------+-------------+----------------+-----------------+---------------+
+|       100 |      14135 | savings     |          12000 | 2019-09-09      | open          |
+|       102 |      14135 | salary      |          25000 | 2019-09-19       | open          |
+|       107 |     141341 | savings     |           5000 | 2019-07-23      | open          |
+|       108 |     141341 | salary      |          15000 | 2019-05-09      | closed        |
++-----------+------------+-------------+----------------+-----------------+---------------+
+
+
+mysql> select c.customerId,c.customername,c.cutomeraddress,c.customermobileno,a.accountId from customersinfo c inner join accountinfo a where a.customerId=c.customerId;
++------------+--------------+----------------+------------------+-----------+
+| customerId | customername | cutomeraddress | customermobileno | accountId |
++------------+--------------+----------------+------------------+-----------+
+|      14135 | raja         | perumbakam     |           123456 |       100 |
+|      14135 | raja         | perumbakam     |           123456 |       102 |
+|      14136 | rani         | perumbakam     |           123478 |       101 |
+|      14137 | abi          | sholingnalur   |           123469 |       103 |
+|      14138 | ani          | sholingnalur   |           123471 |       104 |
+|      14139 | abi          | thambaram      |           123476 |       105 |
+|      14140 | ari          | palanganatham  |           123477 |       106 |
+|     141341 | vijaya       | alagappa       |           123480 |       107 |
+|     141341 | vijaya       | alagappa       |           123480 |       108 |
+|     141343 | vishi        | pykara         |           123485 |       109 |
+|     141344 | yoga         | pykara         |           123487 |       110 |
++------------+--------------+----------------+------------------+-----------+
+
+
+
+mysql> select a.accountId,a.accountBalance,t.transactionId,t.amount,t.TransactionType from accountinfo a inner join transactioninfo t where a.accountId=t.accountId;
++-----------+----------------+---------------+--------+-----------------+
+| accountId | accountBalance | transactionId | amount | TransactionType |
++-----------+----------------+---------------+--------+-----------------+
+|       100 |          12000 |           200 |   2000 | D               |
+|       100 |          12000 |           201 |  20000 | C               |
+|       100 |          12000 |           202 |   1000 | D               |
+|       100 |          12000 |           203 | 500000 | D               |
+|       100 |          12000 |           204 | 500000 | C               |
+|       100 |          12000 |           205 |   5000 | D               |
+|       101 |          20000 |           208 |  50000 | C               |
+|       101 |          20000 |           209 |    500 | D               |
+|       101 |          20000 |           210 |   5000 | C               |
+|       104 |            100 |           206 |   5000 | D               |
+|       110 |          10000 |           207 |   5000 | D               |
++-----------+----------------+---------------+--------+-----------------+
+
+
+mysql> select c.CustomerID,c.CustomerName,c.CutomerAddress,c.CustomerMobileNo,a.AccountID,a.AccountBalance,t.TransactionID,t.TransactionType,t.Amount from CustomersInfo c inner join AccountInfo a on c.CustomerID=a.CustomerID inner join TransactionInfo t on a.AccountID=t.AccountID ;
++------------+--------------+----------------+------------------+-----------+----------------+---------------+-----------------+--------+
+| CustomerID | CustomerName | CutomerAddress | CustomerMobileNo | AccountID | AccountBalance | TransactionID | TransactionType | Amount |
++------------+--------------+----------------+------------------+-----------+----------------+---------------+-----------------+--------+
+|      14135 | raja         | perumbakam     |           123456 |       100 |          12000 |           200 | D               |   2000 |
+|      14135 | raja         | perumbakam     |           123456 |       100 |          12000 |           201 | C               |  20000 |
+|      14135 | raja         | perumbakam     |           123456 |       100 |          12000 |           202 | D               |   1000 |
+|      14135 | raja         | perumbakam     |           123456 |       100 |          12000 |           203 | D               | 500000 |
+|      14135 | raja         | perumbakam     |           123456 |       100 |          12000 |           204 | C               | 500000 |
+|      14135 | raja         | perumbakam     |           123456 |       100 |          12000 |           205 | D               |   5000 |
+|      14136 | rani         | perumbakam     |           123478 |       101 |          20000 |           208 | C               |  50000 |
+|      14136 | rani         | perumbakam     |           123478 |       101 |          20000 |           209 | D               |    500 |
+|      14136 | rani         | perumbakam     |           123478 |       101 |          20000 |           210 | C               |   5000 |
+|      14138 | ani          | sholingnalur   |           123471 |       104 |            100 |           206 | D               |   5000 |
+|     141344 | yoga         | pykara         |           123487 |       110 |          10000 |           207 | D               |   5000 |
++------------+--------------+----------------+------------------+-----------+----------------+---------------+-----------------+--------+
+
+
+
+
