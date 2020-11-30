@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+	var st="vaishnavi";
+	var st1=new String('R');
+
+	document.write(typeof(st)+"<br>");
+    document.write(typeof(st1)+"<br>"+"<br>");
+	var str="please select the following select options";
+	var str1='BUSY BEE';
+	var str2="     hello     ";
+
+	  document.write("String methods"+"<br>");
+      document.write(str.indexOf("select")+"<br>");//gives the index of first occurence of select
+	  document.write(str.lastIndexOf("select")+"<br>");//gives the second occurence of select
+	  document.write(str.search("options")+"<br>");//searching the required word
+	  document.write(st.slice(2,7)+"<br>");//getting the specified part of string
+	  document.write(str.substr(7,7)+"<br>");//getting the substring
+	  document.write(str.substr(-4)+"<br>");//getting the susbstring with negative index
+	  document.write(str.replace('select','find')+"<br>");//replacing the given string with other string
+	  document.write(st.toUpperCase()+"<br>");//converting to uppercase
+	  document.write(str1.toLowerCase()+"<br>");//converting to lowercase
+	  document.write(str1.concat(st)+"<br>");//concatenating two strings
+	  document.write(str2.trim()+"<br>");//removing leading and trailing spaces
+	  document.write(st1.padEnd(4,0)+"<br>");//padding the stirng with given character after the given string
+	  document.write(st1.padStart(5,0)+"<br>");//padding the string with given character before the given string
+	  document.write(str.charAt(8)+"<br>");//getting character at specified index
+	  document.write(str.charCodeAt(8)+"<br>");//unicode representation of given index
+
+
+	  document.write("numeric methods"+"<br>");
+		
+	  var num=56;
+	  var num1=6.667;
+	  var num2=9.656;
+	  var strnum="1000";
+	  var x=10/0;
+	   document.write(num.toString()+"number"+"<br>");//converting number to string
+	   document.write((10000).toExponential(4)+"<br>");//converting number to its exponential form
+	   document.write(num1.toFixed(1)+"<br>");//specifying the no of decimals 
+	   document.write(num2.toPrecision(2)+"<br>");//specifying the percision of float values
+	   document.write(num.valueOf()+" "+num1.valueOf()+"<br>");
+	   document.write(Number(strnum)+"<br>");//converting string to number
+	   document.write(parseInt(num1)+"<br>");//converting stirng to integer
+	   document.write(Number.MAX_VALULE+"<br>");//getting the maximum possible value in number
+	   document.write(Number.MIN_VALUE+"<br>");//getting the miniimum possible value in number
+	   document.write(x+"<br>");//infinity
+	   document.write(Number.POSITIVE_INFINITY+"<br>");//positive infinity
+	   document.write(Number.NEGATIVE_INFINITY+"<br>");//negative infinity
+	   document.write(Number.NaN);//not a number
+
+       document.write("date methods"+"<br><br>");
+	   var date=new Date();
+	   document.write(date+"<br>");//system date
+	   document.write(date.getTime()+"<br>");//getiing time out of date
+	   document.write(date.getFullYear()+"<br>");//getting year
+	   document.write(date.getMonth()+"<br>");//getting month
+	   document.write(date.getDate()+"<br>");//getting date 
+	   document.write(date.getHours()+"<br>");//getting hours
+	   document.write(date.getSeconds()+"<br>");//getting seconds
+	   document.write(date.getMinutes()+"<br>");//getting minutes
+	   document.write(date.getMilliseconds()+"<br>");//getting milliseconds
+	   document.write(date.getDay()+"<br>");//getting day
+	   
+
+   </script>
+  
+ </body>
+</html>

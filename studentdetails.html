@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <script>
+	function Student(id,name,dob,maths,sci,soc)
+	{
+		this.id=id;//initialising student details
+		this.name=name;
+		this.dob=dob;
+		this.maths=maths;
+		this.sci=sci;
+		this.soc=soc;
+		this.total=tot;
+		this.average=avg;
+		this.grade=grad;
+ 
+	}
+
+	function tot()//this function calculates total marks
+	{
+         var t=this.maths+this.sci+this.soc;
+		
+		  return t;
+	}
+
+	function avg()//this function calcualtes average mark
+	{
+		 var a=((this.total()/300)*100).toPrecision(2);
+		 return a;
+	}
+
+	function grad()//calculating grade
+	{
+		var g=(this.average()>75  &&  this.average()<=100)?'A':(this.average()>65  &&  this.average()<75)?'B':(this.average()>35  &&  this.average()<65)?'C':'D';
+
+		return g;
+
+	}
+ </script>
+ <body>
+  <script>
+   var studentid=prompt('enter student id',0);//prompting student details or accepting details from user
+   var student_name=prompt('enter student name',null);
+   var student_dob=prompt('enter student dob',null);
+   var maths_marks=prompt('enter maths marks',0);
+   var science_marks=prompt('enter science marks',0);
+   var social_marks=prompt('enter social marks',0);
+   
+   var student=new Student(Number(studentid),student_name,student_dob,Number(maths_marks),Number(science_marks),Number(social_marks));//creating object of student class
+   document.write(student.id+" "+student.name+" "+student.dob+"<br>");//diplaying details
+   document.write(student.total()+" "+student.average()+" "+student.grade());
+  </script>
+ </body>
+</html>

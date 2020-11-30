@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+	function checkNumber()
+	{   //this function checks whether the given number is prime,prime,perfect,palindrome,armstrong
+		var num=prompt('enter a number',0);//accepting number from user
+		if(Number.isNaN(Number(num))!=true)//checks whether the given input is numner
+		{
+			do
+			{
+
+			var ch=prompt('1)even or odd ,2)prime or not ,3)perfect or not ,4)palindrome or not ,5)armstrong or not ,6)exit',null);//prompting menu option
+
+
+			switch(Number(ch))
+			{
+
+				case 1:
+						 document.write(evenOrOdd(Number(num)));
+						 break;
+
+				case 2:
+						document.write(primeOrNot(Number(num)));
+						break;
+				case 3:
+						document.write(perfectOrNot(Number(num)));
+						break;
+				case 4:
+						document.write(palindromeOrNot(Number(num)));
+						break;
+				case 5:
+						document.write(armstrongOrNot(Number(num)));
+						break;
+
+				case 6:
+						break;
+	    	}
+
+			}while (ch!=6);
+		
+		
+		
+		
+		}
+
+}
+
+		function evenOrOdd(num)//this funciton checks given number is even or odd
+		{
+			var e=(num%2)==0?"even number":"odd number";
+			return e;
+		}
+
+		function primeOrNot(num)//this function checks given number is prime or not
+		{
+			var count;
+			var flag=false;
+			for(count=2;count<=num/2;count++)
+			{
+				  if(num%count==0)
+				  { 
+					var flag=true;
+				    break;
+				  }
+			}
+
+			var f=(flag==false)?"prime number":"not a prime number";
+			return f;
+
+		}
+
+
+		function perfectOrNot(num)//checks given function is perfect or not
+		{
+			var sum=0;
+			for(var count=1;count<num;count++)
+			{
+				  if(num%count==0)
+				  { 
+					 sum+=count;
+				  }
+			}
+
+			var perfect=(sum==num)?"perfect number":"not a perfect number";
+			return perfect;
+
+
+		}
+
+		function palindromeOrNot(num)//checks given number is palindrome or not
+		{   alert(num);
+			var num1=num;
+			var rev=0;
+			do
+			{
+				rem=num1%10;
+				rev=(rev*10)+rem;
+				num1=parseInt(num1%10);
+			}while (num1>0);
+			var pal=(rev==num)?"palindrome":"not a palindrome";
+			return pal;
+		}
+		
+		function armstrongOrNot(num)//checks given number is armstrong or not
+		{
+			var num1=num;
+			var arm=0;
+			while(num1>0)
+			{
+				rem=num1%10;
+				arm=arm+rem*rem*rem;
+			    num1=parseInt(num1%10);
+			}
+			var armstrong=(arm==num)?"atmstrong":"not a armstrong";
+			return armstrong;
+
+
+		}
+
+	</script>
+ </head>
+ <body>
+  <script>
+	checkNumber();//invoding checknumber function which checks the given input is number.
+
+  </script>
+ </body>
+</html>
